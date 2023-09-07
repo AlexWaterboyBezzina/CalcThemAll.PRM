@@ -7,6 +7,12 @@
 #' the output along with Daily PRM in a list format. These values can be useful for
 #' plotting relative individual pesticide contribution to overall PRM,
 #' however most will not need this so default is "FALSE".
+#' @param pesticide_info The reference table which contains all relevant information for
+#' calculations. It is recommended that the "Pesticide_Info" dataset included in this
+#' package be used and if you wish to include more or less pesticides you can appended
+#' them with the relevant information to this table. If you are creating your own table you must
+#' ensure that the pesticide name column is title "analytes" and the relative LOR replacement
+#' column is "relative_LOR" for the function to run.
 #'
 #' @return If include_PAF is "FALSE" returns a data frame of daily average PRM values
 #' for each pesticide type for each sample. Wet season average calculations can be run
