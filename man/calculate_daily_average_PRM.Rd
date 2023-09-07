@@ -4,7 +4,11 @@
 \alias{calculate_daily_average_PRM}
 \title{Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type}
 \usage{
-calculate_daily_average_PRM(LOR_treated_data, include_PAF = FALSE)
+calculate_daily_average_PRM(
+  LOR_treated_data,
+  include_PAF = FALSE,
+  pesticide_info = CatchThemAll.PRM::Pesticide_Info
+)
 }
 \arguments{
 \item{LOR_treated_data}{A data set of LOR treated pesticide concentration values in

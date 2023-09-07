@@ -19,11 +19,11 @@
 #' pesticide_info = CatchThemAll.PRM::Pesticide_Info)
 #' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 #' head(Kanto_daily_PRM)
-calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE){
+calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CatchThemAll.PRM::Pesticide_Info){
 
   LOR_treated_data<- as.data.frame(LOR_treated_data)
 
-  pesti_names <- CatchThemAll.PRM::Pesticide_Info$analyte
+  pesti_names <- pesticide_info$analyte
 
   `Site Name` <- LOR_treated_data$`Site Name`
 
@@ -37,7 +37,7 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE){
   daily_all_chems <- data.frame(`Site Name`, `Sampling Year`, Date)
   for (i in 1:length(pesti_names)){
     analyte_i <- pesti_names[i]
-    parameters <- CatchThemAll.PRM::Pesticide_Info %>% dplyr::filter(analyte == analyte_i)
+    parameters <- pesticide_info %>% dplyr::filter(analyte == analyte_i)
 
     if(parameters$Distribution.type == "Burr Type III"){
 
@@ -77,11 +77,11 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE){
   daily_PRM <- daily_prop %>% dplyr::group_by(Site.Name, Sampling.Year, Date) %>%
     dplyr::summarise("Total PRM" = mean(`Total PRM`))
 
-  for(j in 1:length(unique(CatchThemAll.PRM::Pesticide_Info$Pesticide.type))){
+  for(j in 1:length(unique(pesticide_info$Pesticide.type))){
 
-    type <- unique(CatchThemAll.PRM::Pesticide_Info$Pesticide.type)[j]
+    type <- unique(pesticide_info$Pesticide.type)[j]
 
-    analytes <- CatchThemAll.PRM::Pesticide_Info %>%
+    analytes <- pesticide_info %>%
       dplyr::filter(Pesticide.type == type) %>% .$analyte
 
     group_PRM <- PRM %>% dplyr::select(dplyr::starts_with(analytes))

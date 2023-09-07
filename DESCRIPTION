@@ -1,4 +1,4 @@
-Package: CatchThemAll_PRM
+Package: CatchThemAll.PRM
 Title: Calculate pesticide risk from concentration values...Catch them all
 Version: 0.0.0.9000
 Authors@R: c(
