@@ -1,14 +1,16 @@
-#' Title
+#' Find Sampling Year
 #'
-#' @param dates A date vector from which Sampling Year will be determined. Must be in yyyy-mm-dd format.
-#' @param wet_season_split The first month of the sampling year in numeric e.g. July = 7
+#' @param dates A date vector of sampling dates. Must be in yyyy-mm-dd format.
+#' @param wet_season_split The first month of the sampling year in numeric
+#' e.g. July = 7.  July (7) is used as the default as this is the
+#' first month of the Queensland wet season.
 #'
-#' @return a factored character vector
+#' @return A factored character vector
 #' @export
 #'
 #' @examples
-#' dates <- as.Date("2014-03-04", "2014-12-30", "2015-06-12")
-#' find_Sampling_Year <- (dates) #cut of date for the sampling year will be last day of June
+#' dates <- as.Date(c("2014-03-04", "2014-12-30", "2015-06-12"))
+#' sampling_years <- find_Sampling_Year(dates) #cut of date
 find_Sampling_Year <- function(dates, wet_season_split = 7){
 
   mnth <- lubridate::month(dates)
