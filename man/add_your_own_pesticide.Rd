@@ -9,25 +9,79 @@ add_your_own_pesticide(
   relative_LORs,
   Pesticide.types,
   Distribution.types,
-  log.alphas = NULL,
-  alphas = NULL,
-  log.betas = NULL,
-  betas = NULL,
-  log.bs = NULL,
-  bs = NULL,
-  log.cs = NULL,
-  cs = NULL,
-  log.ks = NULL,
-  ks = NULL,
-  local.log.alphas = NULL,
-  local.alphas = NULL,
-  local.log.betas = NULL,
-  local.betas = NULL
+  log.alphas = NA,
+  alphas = NA,
+  log.betas = NA,
+  betas = NA,
+  log.bs = NA,
+  bs = NA,
+  log.cs = NA,
+  cs = NA,
+  log.ks = NA,
+  ks = NA,
+  local.log.alphas = NA,
+  local.alphas = NA,
+  local.log.betas = NA,
+  local.betas = NA
 )
 }
 \arguments{
-\item{local.betas}{}
+\item{analytes}{A vector of pesticide names}
+
+\item{relative_LORs}{A vector of relative Limit of Reporting
+replacement values}
+
+\item{Pesticide.types}{A vector of the new pesticide's types}
+
+\item{Distribution.types}{A vector of the new pesticide's species
+sensitive distribution types}
+
+\item{log.alphas}{A vector of log alpha values (if applicable, else put NA)}
+
+\item{alphas}{A vector of alpha values (if applicable, else put NA)}
+
+\item{log.betas}{A vector of log.beta values (if applicable, else put NA)}
+
+\item{betas}{A vector of beta values (if applicable, else put NA)}
+
+\item{log.bs}{A vector of log.b values (if applicable, else put NA)}
+
+\item{bs}{A vector of b values (if applicable, else put NA)}
+
+\item{log.cs}{A vector of log.c values (if applicable, else put NA)}
+
+\item{cs}{A vector of c values (if applicable, else put NA)}
+
+\item{log.ks}{A vector of log.k values (if applicable, else put NA)}
+
+\item{ks}{A vector of k values (if applicable, else put NA)}
+
+\item{local.log.alphas}{A vector of local.log.alpha values (if applicable, else put NA)}
+
+\item{local.alphas}{A vector of local.alpha values (if applicable, else put NA)}
+
+\item{local.log.betas}{A vector of local.log.beta values (if applicable, else put NA)}
+
+\item{local.betas}{A vector of local.beta values (if applicable, else put NA)}
+}
+\value{
+A data frame
 }
 \description{
 Add New Pesticides to the PRM Calculation Information Table
+}
+\examples{
+new <- add_your_own_pesticide(analytes = "Poison", relative_LORs = 0.023,
+Pesticide.types = "Poison", Distribution.types = "Log-logistic", log.alphas = 0.09,
+alphas = 0.19, log.betas = 0.014, betas = 0.42)
+multiple_new <- add_your_own_pesticide(analytes = c("Poison", "Acid", "Sludge"),
+relative_LORs = c(0.03, 0.01, 0.5), Pesticide.types = c("Ghost", "Bug", "Poison"),
+Distribution.types = c("Inverse Weibull", "Log-logistic", "Burr Type III"),
+log.alphas = c(NA, 0.002, NA),
+alphas = c(NA, 0.04, NA), log.betas = c(NA, 0.07, NA),
+betas = c(NA, 0.14, NA), log.bs = c(NA, NA, 0.08), bs = c(NA, NA, 0.16),
+log.cs = c(NA, NA, 0.03), cs = c(NA, NA, 0.09), log.ks = c(NA, NA, 0.09),
+ks = c(NA, NA, 0.3), local.log.alphas = c(0.05, NA, NA),
+local.alphas = c(0.15, NA, NA), local.log.betas = c(0.072, NA, NA),
+local.betas = c(0.42, NA, NA))
 }
