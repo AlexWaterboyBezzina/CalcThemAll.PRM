@@ -26,6 +26,8 @@
 #' Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM,
 #' PRM_group = "PSII Herbicide PRM")
 #' head(Kanto_wet_season_PSII_PRM)
+#'
+#' @importFrom dplyr .data
 calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total PRM",
                                              number_imputations = 1000, min_sampling_days = 12,
                                              wet_season_length = 182) {
@@ -37,11 +39,11 @@ calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total 
   if(min_sampling_days < 3){
     #add comment about min number being 3
     Daily_Avg_PRM_data <- Daily_Avg_PRM_data %>%
-      dplyr::group_by(`Site Name`, `Sampling Year`) %>%
+      dplyr::group_by(.data$`Site Name`, .data$`Sampling Year`) %>%
       dplyr::filter(dplyr::n() > 2)
   } else{
     Daily_Avg_PRM_data <- Daily_Avg_PRM_data %>%
-      dplyr::group_by(`Site Name`, `Sampling Year`) %>%
+      dplyr::group_by(.data$`Site Name`, .data$`Sampling Year`) %>%
       dplyr::filter(dplyr::n() > min_sampling_days)
   }
 
@@ -110,8 +112,8 @@ calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total 
     MI_Ave_PRM <- mean(means.1000)
     n <- length(means.1000)
     conf.level <- 0.95
-    z <- qt((1+conf.level)/2, df=n-1)
-    se <- sd(unlist(means.1000))/sqrt(n)
+    z <- stats::qt((1+conf.level)/2, df=n-1)
+    se <- stats::sd(unlist(means.1000))/sqrt(n)
     CI <- z * se
     MI_CI_lower <- MI_Ave_PRM - CI
     MI_CI_upper <- MI_Ave_PRM + CI

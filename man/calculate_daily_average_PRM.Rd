@@ -41,4 +41,5 @@ Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
 pesticide_info = CatchThemAll.PRM::Pesticide_Info)
 Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 head(Kanto_daily_PRM)
+
 }

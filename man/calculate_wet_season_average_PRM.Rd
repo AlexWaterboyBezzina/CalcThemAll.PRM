@@ -46,4 +46,5 @@ Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticid
 Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM,
 PRM_group = "PSII Herbicide PRM")
 head(Kanto_wet_season_PSII_PRM)
+
 }

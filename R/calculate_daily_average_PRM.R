@@ -25,7 +25,10 @@
 #' pesticide_info = CatchThemAll.PRM::Pesticide_Info)
 #' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 #' head(Kanto_daily_PRM)
+#'
+#' @importFrom dplyr .data
 calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CatchThemAll.PRM::Pesticide_Info){
+
 
   LOR_treated_data<- as.data.frame(LOR_treated_data)
 
@@ -43,7 +46,7 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
   daily_all_chems <- data.frame(`Site Name`, `Sampling Year`, Date)
   for (i in 1:length(pesti_names)){
     analyte_i <- pesti_names[i]
-    parameters <- pesticide_info %>% dplyr::filter(analyte == analyte_i)
+    parameters <- pesticide_info %>% dplyr::filter(.data$analyte == analyte_i)
 
     if(parameters$Distribution.type == "Burr Type III"){
 
@@ -80,15 +83,16 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
 
   daily_prop$`Total PRM` <- (1-(apply(PRM, 1, FUN=prod, na.rm=TRUE)))*100
 
-  daily_PRM <- daily_prop %>% dplyr::group_by(Site.Name, Sampling.Year, Date) %>%
-    dplyr::summarise("Total PRM" = mean(`Total PRM`))
+  daily_PRM <- daily_prop %>% dplyr::group_by(.data$Site.Name, .data$Sampling.Year, Date) %>%
+    dplyr::summarise("Total PRM" = mean(.data$`Total PRM`))
 
   for(j in 1:length(unique(pesticide_info$Pesticide.type))){
 
     type <- unique(pesticide_info$Pesticide.type)[j]
 
     analytes <- pesticide_info %>%
-      dplyr::filter(Pesticide.type == type) %>% .$analyte
+      dplyr::filter(.data$Pesticide.type == type)
+    analytes <- analytes$analyte
 
     group_PRM <- PRM %>% dplyr::select(dplyr::starts_with(analytes))
 
@@ -97,7 +101,7 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
     daily_prop$group_PRM <- group_PRM
 
     place_holder_PRM <- daily_prop %>%
-      dplyr::group_by(Site.Name, Sampling.Year, Date) %>%
+      dplyr::group_by(.data$Site.Name, .data$Sampling.Year, Date) %>%
       dplyr::summarise("PRM" = mean(group_PRM))
 
     daily_PRM$group_PRM <- place_holder_PRM$PRM
