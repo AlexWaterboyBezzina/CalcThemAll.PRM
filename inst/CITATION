@@ -1,0 +1,22 @@
+citHeader("To cite CatchThemAll.PRM in publications use:")
+
+citEntry( entry = "Manual",
+  title    = "CatchThemAll.PRM: Pesticide Risk Metric Calculations",
+  author   = "Alexander Bezzina and Cath Neelamraju and Jennifer Strauss and Hayley Kaminski and Cameron Roberts and Jordan Glen and Francisco Dias",
+  journal  = "R package",
+  year     = 2023,
+  url      = "https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM",
+  note = "Water Quality Monitoring & Investigations, Department of Environment and Science, Queensland Government",
+  textVersion = "Bezzina A, Neelamraju C, Strauss J, Kaminski H, Roberts C, Glen J, Dias F. 2022. CatchThemAll.PRM: Pesticide Risk Metric Calculations. R package.
+  Water Quality Monitoring & Investigations, Department of Environment and Science, Queensland Government. https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM"
+)
+
+
+citEntry( entry = "article",
+  title    = "Development of a Method for Estimating the Toxicity of Pesticide Mixtures and a Pesticide Risk Baseline for the Reef 2050 Water Quality Improvement Plan",
+  author   = "Michael Warne and Catherine Neelamraju and Jennifer Strauss and RA Smith and Ryan Turner and Reinier Mann",
+  journal  = "Department of Environment and Science, Queensland Government",
+  year     = "2020",
+url = "https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f",
+textVersion = "Warne MStJ, Neelamraju C, Strauss J, Smith RA, Turner RDR, Mann RM. 2020. Development of a method for estimating the toxicity of pesticide mixtures and a Pesticide Risk Baseline for the Reef 2050 Water Quality Improvement Plan. Brisbane: Department of Environment and Science, Queensland Government.",
+)
