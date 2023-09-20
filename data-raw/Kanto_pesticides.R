@@ -9,12 +9,11 @@ Kanto_pesticides <- Kanto_pesticides %>% rename(any_of(c("Site Name" = "site_nam
                                                          "Haloxyfop (acid)" = "haloxyfop_acid", "Hexazinone" = "hexazinone", "Imazapic" = "imazapic", "Imidacloprid" = "imidacloprid", "Isoxaflutole metabolite (DKN)" = "isoxaflutole_metabolite_dkn",
                                                          "MCPA" = "mcpa", "Metribuzin" = "metribuzin", "Metsulfuron methyl" = "metsulfuron_methyl", "Metolachlor" = "metolachlor", "Pendimethalin" = "pendimethalin", "Prometryn" = "prometryn", "Simazine" = "simazine",
                                                          "Tebuthiuron" = "tebuthiuron", "Terbuthylazine" = "terbuthylazine", "Triclopyr" = "triclopyr", "2,4-D" = "x2_4_d", "Metsulfuron methyl" = "metsulfuron", "Haloxyfop (acid)" = "haloxyfop", "Isoxaflutole metabolite (DKN)" = "isoxaflutole")))
-Kanto_pesticides$Bromacil <- Kanto_pesticides$Hexazinone
-Kanto_pesticides$Diazinon <- Kanto_pesticides$Fluroxypyr
+
 
 Kanto_pesticides$`Site Name`[Kanto_pesticides$`Site Name` == "Sandy Creek at Homebush"] <- "Lavendar Town"
 Kanto_pesticides$`Site Name`[Kanto_pesticides$`Site Name` == "Barratta Creek at Northcote"] <- "Cerulean City"
 Kanto_pesticides$`Site Name`[Kanto_pesticides$`Site Name` == "Tully River at Euramo"] <- "Mt Moon"
 Kanto_pesticides$`Site Name`[Kanto_pesticides$`Site Name` == "Daintree River at Lower Daintree"] <- "Viridian Forest"
 
-usethis::use_data(Kanto_pesticides, overwrite = TRUE)
+#usethis::use_data(Kanto_pesticides, overwrite = TRUE)
