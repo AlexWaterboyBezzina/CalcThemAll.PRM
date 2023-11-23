@@ -12,13 +12,17 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
+    gdist (>= 0.1.0),
     lubridate,
     magrittr,
     MASS,
-    stats
+    stats,
+    VGAM
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 LazyData: true
+Remotes: 
+    salauer/gdist

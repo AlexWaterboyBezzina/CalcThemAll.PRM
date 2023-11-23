@@ -50,24 +50,56 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
 
     if(parameters$Distribution.type == "Burr Type III"){
 
-      new <- Burr_Type_III_Formula(analyte_column = LOR_treated_data[,analyte_i],
-                                   parameter_b = parameters$b, parameter_c = parameters$c,
-                                   parameter_k = parameters$k)
+      new <- Burr_Type_III_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                   shape_location = parameters$shape_location,
+                                   scale = parameters$scale,
+                                   shape_location_2 = parameters$shape_location_2)
 
     } else
-      if(parameters$Distribution.type == "Log-logistic"){
+      if(parameters$Distribution.type == "Log-Logistic"){
 
-        new <- Log_Logistic_Formula(LOR_treated_data[,analyte_i],
-                                    parameter_alpha = parameters$alpha,
-                                    parameter_beta = parameters$beta)
+        new <- Log_Logistic_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                    shape_location = parameters$shape_location,
+                                    scale = parameters$scale)
 
       }else
         if(parameters$Distribution.type == "Inverse Weibull"){
 
-          new <- Inverse_Weibull_Formula(analyte_column = LOR_treated_data[,analyte_i],
-                                         parameter_local.alpha = parameters$local.alpha,
-                                         parameter_local.beta = parameters$local.beta)
-        }
+          new <- Inverse_Weibull_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                         shape_location = parameters$shape_location,
+                                         scale = parameters$scale)
+        }else
+          if(parameters$Distribution.type == "Log-Normal"){
+            new <- Log_Normal_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                           shape_location = parameters$shape_location,
+                                           scale = parameters$scale)
+          }else
+            if(parameters$Distribution.type == "Log-Gumbel"){
+              new <- Log_Gumbel_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                        shape_location = parameters$shape_location,
+                                        scale = parameters$scale)
+            }else
+              if(parameters$Distribution.type == "Log-Normal Log-Normal"){
+                new <- Log_Normal_Log_Normal_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                          shape_location = parameters$shape_location,
+                                          scale = parameters$scale,
+                                          shape_location_2 = parameters$shape_location_2,
+                                          scale_2 = parameters$scale_2,
+                                          weight = parameters$weight)
+              }else
+                if(parameters$Distribution.type == "Log-Logistic Log-Logistic"){
+                  new <- Log_Logistic_Log_Logistic_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                                       shape_location = parameters$shape_location,
+                                                       scale = parameters$scale,
+                                                       shape_location_2 = parameters$shape_location_2,
+                                                       scale_2 = parameters$scale_2,
+                                                       weight = parameters$weight)
+                }else
+                  if(parameters$Distribution.type == "Gamma"){
+                    new <- Gamma_Formula(concentration = as.numeric(LOR_treated_data[,analyte_i]),
+                                              shape_location = parameters$shape_location,
+                                              scale = parameters$scale)
+                  }
 
 
     daily_all_chems$new <- new

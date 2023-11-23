@@ -1,57 +1,32 @@
 ## code to prepare `Pesticide_Info` dataset goes here
-Pesticide_Info <- data.frame(analyte = c("Chlorpyrifos", "Fipronil", "Imidacloprid", "Haloxyfop (acid)", "Imazapic", "Metsulfuron methyl", "Pendimethalin", "Metolachlor",
-                                         "2,4-D","MCPA", "Fluroxypyr", "Triclopyr", "Isoxaflutole metabolite (DKN)", "Ametryn", "Atrazine", "Prometryn",
-                                         "Terbuthylazine","Tebuthiuron", "Simazine", "Diuron", "Hexazinone","Metribuzin"),
-                             relative_LOR = c(0.0000009459, 0.000004776, 0.000136913, 1, 0.0001092979, 0.0000101446, 0.00011788, 0.0000173108,
-                                              0.008930644, 0.00002295733, 0.274507874, 0.00052679, 0.000632348, 0.000213405, 0.000768738, 0.000226446,
-                                              0.001336659, 0.012641533, 0.051769031, 0.000197592, 0.004380853, 0.005731504),
-                             Pesticide.type = c("Insecticide", "Insecticide", "Insecticide", "Other Herbicide", "Other Herbicide", "Other Herbicide", "Other Herbicide", "Other Herbicide",
-                                                "Other Herbicide", "Other Herbicide", "Other Herbicide", "Other Herbicide", "Other Herbicide", "PSII Herbicide", "PSII Herbicide", "PSII Herbicide",
-                                                "PSII Herbicide", "PSII Herbicide", "PSII Herbicide", "PSII Herbicide", "PSII Herbicide", "PSII Herbicide"),
-                             Distribution.type = c("Burr Type III", "Burr Type III", "Inverse Weibull", "Log-logistic", "Log-logistic", "Inverse Weibull", "Burr Type III", "Burr Type III",
-                                                   "Inverse Weibull", "Burr Type III", "Log-logistic", "Burr Type III", "Inverse Weibull", "Burr Type III", "Burr Type III", "Burr Type III",
-                                                   "Burr Type III", "Log-logistic", "Burr Type III", "Burr Type III", "Inverse Weibull", "Inverse Weibull"),
-                             log.alpha = c(NA, NA, NA, 9.736670973, 3.115540332, NA, NA, NA,
-                                           NA, NA, 7.187286375, NA, NA, NA, NA, NA,
-                                           NA, 3.973218745, NA, NA, NA, NA),
-                             alpha = c(NA, NA, NA, 16927.09672, 22.54560918, NA, NA, NA,
-                                       NA, NA, 1322.51, NA, NA, NA, NA, NA,
-                                       NA, 53.15535, NA, NA, NA, NA),
-                             log.beta =  c(NA, NA, NA, 0.313737397, -0.287699081, NA, NA, NA,
-                                           NA, NA, 0.628023319, NA, NA, NA, NA, NA,
-                                           NA, 0.642836234, NA, NA, NA, NA),
-                             beta = c(NA, NA, NA, 1.368530309, 0.749987243, NA, NA, NA,
-                                      NA, NA, 1.873903, NA, NA, NA, NA, NA,
-                                      NA, 1.901867, NA, NA, NA, NA),
-                             log.b = c(1.307471952, -5.108354396, NA, NA, NA, NA, 1.181856154, 6.386127229,
-                                       NA, 10.24155642, NA, 6.962690537, NA, 1.70321271129072, 2.435718313, 1.945054953,
-                                       1.579371269, NA, 4.660057347, -3.093033062, NA, NA),
-                             b = c(3.696816161, 0.006046024, NA, NA, NA, NA, 3.260420431, 593.5534261,
-                                   NA, 28044.74, NA, 1056.472, NA, 5.491562, 11.42402, 6.994016,
-                                   4.851904, NA, 105.6421, 0.04536415, NA, NA),
-                             log.c = c(-1.002926184, -0.614167078, NA, NA, NA, NA, -0.334798726, -0.288986309,
-                                       NA, 0.219595444, NA, 1.700066731, NA, 0.051791759, -0.380527521, 0.004043219,
-                                       -0.082197727, NA, 0.716940996, -0.682096599, NA, NA),
-                             c = c(0.366804532, 0.541091394, NA, NA, NA, NA, 0.71548208, 0.74902246,
-                                   NA, 1.245573, NA, 5.474313, NA, 1.053156, 0.6835008, 1.004051,
-                                   0.9210898, NA, 2.048158, 0.5055559, NA, NA),
-                             log.k = c(0.3404141, 1.6728064, NA, NA, NA, NA, 0.4320021, 0.6023196,
-                                       NA, -1.409133471, NA, -2.312677626, NA, 0.027215171, 0.556916028, 0.046399659,
-                                       0.732467232, NA, 0.186694505, 2.079757129, NA, NA),
-                             k = c(1.40552947, 5.3270967, NA, NA, NA, NA, 1.54033831, 0.54754006,
-                                   NA, 0.2443549, NA, 0.09899582, NA, 1.027589, 1.745282, 1.047493,
-                                   2.080207, NA, 1.205259, 8.002525, NA, NA),
-                             local.log.alpha = c(NA, NA, -0.689527, NA, NA, -1.350296558, NA, NA,
-                                                 -0.658974563, NA, NA, NA, -0.385904591, NA, NA, NA,
-                                                 NA, NA, NA, NA, 0.258963617, 0.5369),
-                             local.alpha = c(NA, NA, 0.501813371, NA, NA, 0.259163392, NA, NA,
-                                             0.5173816, NA, NA, NA, 0.679835385, NA, NA, NA,
-                                             NA, NA, NA, NA, 1.295586667, 1.710695478),
-                             local.log.beta = c(NA, NA, -0.173493, NA, NA, -0.82416039, NA, NA,
-                                                -4.936336367, NA, NA, NA, -1.242018461, NA, NA, NA,
-                                                NA, NA, NA, NA, -1.76241848, -1.58798),
-                             local.beta = c(NA, NA, 0.840723036, NA, NA, 0.438603093, NA, NA,
-                                            0.007180858, NA, NA, NA, 0.288800696, NA, NA, NA,
-                                            NA, NA, NA, NA, 0.17162928, 0.20433796), stringsAsFactors = FALSE)
+{SSD_params <- read.csv("~/GitHub/SSD_params.csv")
+SSD_params <- SSD_params %>% filter(Day < 41)
+SSD_params <- SSD_params %>% rename("analyte" = "Day", "Distribution.type" = "dist")
 
+  SSD_params$term[SSD_params$term == "pmix"] <- "weight"
+  SSD_params$term[SSD_params$term == "locationlog"] <- "shape_location"
+  SSD_params$term[SSD_params$term == "locationlog1"] <- "shape_location"
+  SSD_params$term[SSD_params$term == "locationlog2"] <- "shape_location_2"
+  SSD_params$term[SSD_params$term == "scalelog"] <- "scale"
+  SSD_params$term[SSD_params$term == "scalelog1"] <- "scale"
+  SSD_params$term[SSD_params$term == "scalelog2"] <- "scale_2"
+  SSD_params$term[SSD_params$term == "meanlog1"] <- "shape_location"
+  SSD_params$term[SSD_params$term == "meanlog2"] <- "shape_location_2"
+  SSD_params$term[SSD_params$term == "sdlog1"] <- "scale"
+  SSD_params$term[SSD_params$term == "sdlog2"] <- "scale_2"
+  SSD_params$Distribution.type[SSD_params$Distribution.type == "lgumbel"] <- "Log-Gumbel"
+  SSD_params$Distribution.type[SSD_params$Distribution.type == "llogis_llogis"] <- "Log-Logistic Log-Logistic"
+  SSD_params$Distribution.type[SSD_params$Distribution.type == "lnorm_lnorm"] <- "Log-Normal Log-Normal"
+
+
+SSD_params <- SSD_params %>% select(analyte, term, est, Distribution.type)
+SSD_params <- SSD_params %>% pivot_wider(names_from = term, values_from = c(est))
+SSD_params$Pesticide.type <- "Insecticide"
+SSD_params$relative_LOR <- 0.000137000
+
+SSD_params$analyte <- as.character(SSD_params$analyte)
+Pesticide_Info <- read.csv("~/GitHub/Pesticide_Info.csv")
+Pesticide_Info$Distribution.type[Pesticide_Info$Distribution.type == "Log-logistic"] <- "Log-Logistic"
+Pesticide_Info <- Pesticide_Info %>% full_join(SSD_params)
+}
 #usethis::use_data(Pesticide_Info, overwrite = TRUE)

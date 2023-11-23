@@ -2,8 +2,13 @@
 
 export("%>%")
 export(Burr_Type_III_Formula)
+export(Gamma_Formula)
 export(Inverse_Weibull_Formula)
+export(Log_Gumbel_Formula)
 export(Log_Logistic_Formula)
+export(Log_Logistic_Log_Logistic_Formula)
+export(Log_Normal_Formula)
+export(Log_Normal_Log_Normal_Formula)
 export(add_your_own_pesticide)
 export(calculate_daily_average_PRM)
 export(calculate_wet_season_average_PRM)
