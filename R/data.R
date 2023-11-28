@@ -1,37 +1,37 @@
-#' Analyte Information for Pesticide Risk Metric Calculations (Reference Table)
+#' Pollutant Information for Pollutant Risk Metric Calculations (Reference Table)
 #'
-#' A reference table for PRM calculations in this package that include Pesticide information
+#' A reference table for PRM calculations in this package that include pollutant information
 #' such as type, species sensitivity distribution distributions and relevant equation variables.
 #'
-#' @format ## `Pesticide_Info`
-#' A data frame with 24 rows and 18 columns:
+#' @format ## `pollutant_info`
+#' A data frame with 62 rows and 9 columns:
 #' \describe{
-#'   \item{analyte}{Pesticide name}
+#'   \item{pollutant}{Pollutant name}
 #'   \item{relative_LOR}{The relative Limit of Reporting replacement value}
-#'   \item{Pesticide.Type}{The pesticide method of effect}
-#'   \item{Distribution.Type}{The species sensetivity distribution shape/type}
-#'   \item{log.aplha, alpha, log.beta, beta, log.b, b, log.c, c, log.k, k, local.log.alpha, local.alpha, local.log.beta,
-#'   local.beta}{Species sensativity distribution variables used in PRM calculations}
+#'   \item{pollutant_type}{The pollutant method of effect}
+#'   \item{distribution_type}{The species sensetivity distribution shape/type}
+#'   \item{shape_location, shape_location2, scale, scale2,
+#'   weight}{Species sensativity distribution variables used in PRM calculations}
 #'   ...
 #' }
 #' @source <https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f>
-"Pesticide_Info"
+"pollutant_info"
 
 
-#' Kanto Region Pesticide Concentration Values (Example Data Set)
+#' Kanto Region Pollutant Concentration Values (Example Data Set)
 #'
-#' A subset of pesticide concentration data for all pesticides in "Pesticide_Info" from the Kanto region
+#' A subset of pollutant concentration data for all pollutants in "pollutant_info" from the Kanto region
 #'
-#' @format ## `Kanto_pesticides`
-#' A data frame with 808 rows and 26 columns:
+#' @format ## `Kanto_pollutants`
+#' A data frame with 808 rows and 64 columns:
 #' \describe{
 #'   \item{Site Name}{Site name}
 #'   \item{Date}{Sampling date}
 #'   \item{Ametryn, Atrazine, Chlorpyrifos, Diuron, Fipronil, Fluroxypyr, Haloxyfop (acid), Hexazinone,
 #'   Imazapic, Imidacloprid, Isoxaflutole metabolite (DKN), MCPA, Metolachlor, Metribuzin, Metsulfuron methyl,
 #'   Pendimethalin, Prometryn, Simazine, Tebuthiuron, Terbuthylazine, Triclopyr, 2,4-D, Bromacil
-#'   Diazinon}{Pesticide concentration values in ug/L}
+#'   Diazinon, Imidicloprid1:40}{pollutant concentration values in ug/L}
 #'   ...
 #' }
 #' @source <https://bulbapedia.bulbagarden.net/wiki/Kanto>
-"Kanto_pesticides"
+"Kanto_pollutants"

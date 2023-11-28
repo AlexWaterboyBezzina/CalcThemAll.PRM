@@ -7,19 +7,19 @@
 Log_Logistic_Formula(concentration, scale, shape_location)
 }
 \arguments{
-\item{concentration}{The vector of concentration values for a selected pesticide,
+\item{concentration}{The vector of concentration values for a selected pollutant,
 that has a species sensitivity distribution that fits the Log Logistic distribution,
 to run the equation on.}
 
-\item{scale}{The log logistic alpha/scale value for the selected pesticide.
-These can be found in the "Pesticide_Info" data frame provided in this package.
-If you are including other pesticides you will need to append them with their
-respective distribution variables to the "Pesticide_Info" table.}
+\item{scale}{The log logistic alpha/scale value for the selected pollutant.
+These can be found in the "pollutant_info" data frame provided in this package.
+If you are including other pollutants you will need to append them with their
+respective distribution variables to the "pollutant_info" table.}
 
-\item{shape_location}{The log logistic beta/shape value for the selected pesticide.
-These can be found in the "Pesticide_Info" data frame provided in this package.
-If you are including other pesticides you will need to append them with their
-respective distribution variables to the "Pesticide_Info" table.}
+\item{shape_location}{The log logistic beta/shape value for the selected pollutant.
+These can be found in the "pollutant_info" data frame provided in this package.
+If you are including other pollutants you will need to append them with their
+respective distribution variables to the "pollutant_info" table.}
 }
 \value{
 a numeric vector
@@ -31,7 +31,7 @@ Log Logistic Formula
 Imazapic <- c(0.000000001, 0.5, 2.7, 11)
 #Imazapic is used as its species sensitivity distribution plots fits Log Logistic
 Log_Logistic_Formula(concentration = Imazapic,
-scale = Pesticide_Info$scale[Pesticide_Info$analyte == "Imazapic"],
-shape_location = Pesticide_Info$shape_location[Pesticide_Info$analyte == "Imazapic"])
+scale = pollutant_info$scale[pollutant_info$pollutant == "Imazapic"],
+shape_location = pollutant_info$shape_location[pollutant_info$pollutant == "Imazapic"])
 
 }

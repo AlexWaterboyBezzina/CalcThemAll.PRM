@@ -1,18 +1,19 @@
 #' Treat a whole data set's LOR values
 #'
-#' @param raw_data A data set of raw pesticide concentration values in individual columns
-#' that match the pesticide names in the "Pesticide_Info" data frame.
+#' @param raw_data A data set of raw pollutant concentration values in individual columns
+#' that match the pollutant names in the "pollutant_info" data frame.
 #' This data set should also include a "Date" column and "Site Name" column.
-#' A reference data set can be seen in the "Kanto_pesticides" data frame provided in this package,
+#' A reference data set can be seen in the "Kanto_pollutants" data frame provided in this package,
 #' your data should mirror these column headings.
-#' @param pesticide_info The reference table which contains all relevant information for
-#' calculations. It is recommended that the "Pesticide_Info" dataset included in this
-#' package be used and if you wish to include more or less pesticides you can appended
+#' @param pollutant_info The reference table which contains all relevant information for
+#' calculations. It is recommended that the "pollutant_info" data set included in this
+#' package be used and if you wish to include more or less pollutants you can appended
 #' them with the relevant information to this table. If you are creating your own table you must
-#' ensure that the pesticide name column is title "analytes" and the relative LOR replacement
+#' ensure that the pollutant name column is title "pollutants" and the relative LOR replacement
 #' column is "relative_LOR" for the function to run.
 #' @param wet_season_split The first month of the sampling year in numeric e.g. July = 7.
 #' July (7) is used as the default as this is the first month of the Queensland wet season.
+#' This is only required for the LOR replacement method and if needed.
 #' @param treatment_method Select how to treat the LOR values with either the default "WQI"
 #' representing the Queensland Department of Environment & Science Water Quality Monitoring &
 #' Investigations team's method for replacing LORs or "Zero" which replaces them with
@@ -23,11 +24,11 @@
 #' @export
 #'
 #' @examples
-#' Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
-#' pesticide_info = CatchThemAll.PRM::Pesticide_Info)
-#' head(Kanto_pesticides_LOR_treated)
+#' Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+#' pollutant_info = CatchThemAll.PRM::pollutant_info)
+#' head(Kanto_pollutants_LOR_treated)
 #'
-treat_LORs_all_data <- function(raw_data, pesticide_info = CatchThemAll.PRM::Pesticide_Info,
+treat_LORs_all_data <- function(raw_data, pollutant_info = CatchThemAll.PRM::pollutant_info,
                                 wet_season_split = 7, treatment_method = "WQI") {
   raw_data <- as.data.frame(raw_data)
   raw_data$Date <- as.POSIXlt(raw_data$Date, tryFormats = c("%Y-%m-%d",
@@ -49,7 +50,7 @@ treat_LORs_all_data <- function(raw_data, pesticide_info = CatchThemAll.PRM::Pes
   for(k in 1:length(list_site_year_dataframes)){
 
     updated_LOR_list[[k]] <- treat_LORs(list_site_year_dataframes[[k]],
-                                        pesticide_info, treatment_method)
+                                        pollutant_info, treatment_method)
 
     updated_LOR_list
 
@@ -60,7 +61,7 @@ treat_LORs_all_data <- function(raw_data, pesticide_info = CatchThemAll.PRM::Pes
   Treated_LORs <- do.call(rbind, updated_LOR_list)
 
   Treated_LORs <- Treated_LORs %>% dplyr::select("Site Name", "Sampling Year", "Date",
-                                                 pesticide_info$analyte)
+                                                 pollutant_info$pollutant)
   #return data frame
   return(dplyr::as_tibble(Treated_LORs))
 

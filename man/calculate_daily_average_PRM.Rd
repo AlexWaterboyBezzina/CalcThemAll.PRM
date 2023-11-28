@@ -2,44 +2,44 @@
 % Please edit documentation in R/calculate_daily_average_PRM.R
 \name{calculate_daily_average_PRM}
 \alias{calculate_daily_average_PRM}
-\title{Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type}
+\title{Calculate Daily Average Pollutant Risk Metric Values For Each Pollutant Type}
 \usage{
 calculate_daily_average_PRM(
   LOR_treated_data,
   include_PAF = FALSE,
-  pesticide_info = CatchThemAll.PRM::Pesticide_Info
+  pollutant_info = CatchThemAll.PRM::pollutant_info
 )
 }
 \arguments{
-\item{LOR_treated_data}{A data set of LOR treated pesticide concentration values in
-individual columns that match the pesticide names in the "Pesticide_Info" data frame.
+\item{LOR_treated_data}{A data set of LOR treated pollutant concentration values in
+individual columns that match the pollutant names in the "pollutant_info" data frame.
 This data set should also include a "Date", "Sampling Year" and "Site Name" column.}
 
 \item{include_PAF}{If "TRUE" Percentage Affected Fraction values are included in
 the output along with Daily PRM in a list format. These values can be useful for
-plotting relative individual pesticide contribution to overall PRM,
+plotting relative individual pollutant contribution to overall PRM,
 however most will not need this so default is "FALSE".}
 
-\item{pesticide_info}{The reference table which contains all relevant information for
-calculations. It is recommended that the "Pesticide_Info" dataset included in this
-package be used and if you wish to include more or less pesticides you can appended
+\item{pollutant_info}{The reference table which contains all relevant information for
+calculations. It is recommended that the "pollutant_info" data set included in this
+package be used and if you wish to include more pollutants you can appended
 them with the relevant information to this table. If you are creating your own table you must
-ensure that the pesticide name column is title "analytes" and the relative LOR replacement
+ensure that the pollutant name column is title "pollutant" and the relative LOR replacement
 column is "relative_LOR" for the function to run.}
 }
 \value{
 If include_PAF is "FALSE" returns a data frame of daily average PRM values
-for each pesticide type for each sample. Wet season average calculations can be run
+for each pollutant type for each sample. Wet season average calculations can be run
 on the returned data. If include_PAF is "TRUE" returns a list with daily PRM values
 in a data frame as the first object and a data frame of PAF values as the second object.
 }
 \description{
-Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type
+Calculate Daily Average Pollutant Risk Metric Values For Each Pollutant Type
 }
 \examples{
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
-pesticide_info = CatchThemAll.PRM::Pesticide_Info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
+Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+pollutant_info = CatchThemAll.PRM::pollutant_info)
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
 head(Kanto_daily_PRM)
 
 }

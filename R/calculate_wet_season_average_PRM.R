@@ -1,12 +1,12 @@
-#' Calculate Wet Season Average Pesticide Risk Metric Values Using Multiple Imputation
+#' Calculate Wet Season Average Pollution Risk Metric Values Using Multiple Imputation
 #'
 #' @param daily_PRM_data A data set of calculated daily average PRM values.
 #' This data set should also include a "Date", "Sampling Year" and "Site Name" column.
 #' @param PRM_group This specifies the name of the column to run the calculations on.
-#' The daily average calculations gives PRM for each pesticide type and
+#' The daily average calculations gives PRM for each pollution type and
 #' total in different columns so this selects which to run. "Total" is set as
-#' the default asit is the PRM of all pesticides.
-#' @param number_imputations This sets the number of imputations to run.
+#' the default as it is the PRM of all pollutants.
+#' @param imputations This sets the number of imputations to run.
 #' The more imputations the greater the reliability,
 #' however it also increases calculation time. You can increase imputations beyond 1000
 #' however the improvement of the confidence interval on imputed values may not be
@@ -20,16 +20,16 @@
 #' @export
 #'
 #' @examples
-#' Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
-#' pesticide_info = Pesticide_Info)
-#' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
+#' Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+#' pollutant_info = CatchThemAll.PRM::pollutant_info)
+#' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
 #' Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM,
 #' PRM_group = "PSII Herbicide PRM")
 #' head(Kanto_wet_season_PSII_PRM)
 #'
 #' @importFrom dplyr .data
 calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total PRM",
-                                             number_imputations = 1000, min_sampling_days = 12,
+                                             imputations = 1000, min_sampling_days = 12,
                                              wet_season_length = 182) {
 
   daily_PRM_data <- as.data.frame(daily_PRM_data)
@@ -53,7 +53,7 @@ calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total 
                                      Daily_Avg_PRM_data$`Sampling Year`), drop = TRUE)
 
   #Create a list of lists to hold 1000 sets of imputed values
-  list_kernel_imputations <- rep(list(vector("list", number_imputations)),
+  list_kernel_imputations <- rep(list(vector("list", imputations)),
                                  length(list_observed_data))
 
   #Name elements of list appropriately
