@@ -13,7 +13,8 @@ add_your_own_pollutant(
   shape_location_2s = NA,
   scales = NA,
   scale_2s = NA,
-  weights = NA
+  weights = NA,
+  pollutant_info = CatchThemAll.PRM::pollutant_info
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ sensitive distribution types}
 \item{scale_2s}{A vector of secondary scale values (if applicable, else put NA)}
 
 \item{weights}{A vector of weight values (if applicable, else put NA)}
+
+\item{pollutant_info}{A dataset to add pollutants too}
 }
 \value{
 A data frame

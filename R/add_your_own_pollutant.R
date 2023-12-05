@@ -11,6 +11,7 @@
 #' @param scales A vector of scale values (if applicable, else put NA)
 #' @param scale_2s A vector of secondary scale values (if applicable, else put NA)
 #' @param weights A vector of weight values (if applicable, else put NA)
+#' @param pollutant_info A dataset to add pollutants too
 #'
 #' @return A data frame
 #' @export
@@ -28,7 +29,7 @@
 add_your_own_pollutant <- function(pollutants, relative_LORs, pollutant_types,
                                    distribution_types, shape_locations = NA,
                                    shape_location_2s = NA, scales = NA,
-                                   scale_2s = NA, weights = NA){
+                                   scale_2s = NA, weights = NA, pollutant_info = CatchThemAll.PRM::pollutant_info){
 
   new_pollutants <- data.frame(pollutant = c(pollutants), relative_LOR = c(relative_LORs),
                             pollutant_type = c(pollutant_types),
@@ -37,6 +38,6 @@ add_your_own_pollutant <- function(pollutants, relative_LORs, pollutant_types,
                             shape_location_2 = c(shape_location_2s), scale = c(scales),
                             scale_2 = c(scale_2s), weight = c(weights))
 
-  new_pollutant_info <- CatchThemAll.PRM::pollutant_info %>% rbind(new_pollutants)
+  new_pollutant_info <- pollutant_info %>% rbind(new_pollutants)
   return(as.data.frame(new_pollutant_info))
 }
