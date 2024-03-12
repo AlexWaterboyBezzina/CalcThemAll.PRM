@@ -1,26 +1,26 @@
 
 # CatchThemAll.PRM
 
-R package for calculating **Pesticide Risk Metric** values. This version
-only includes the 22 pesticides currently used in the Queensland
-Department of Environment and Science *Pesticide Risk Baseline for the
-Reef 2050 Water Quality Improvement Plan*.
+R package for calculating **Pollutant Risk Metric** (PRM) values. The
+pollutant risk metric is based on the Queensland Department of
+Environment and Science’s **Pesticide Risk Metric** and as such this
+package comes pre-loaded with species sensitivity distribution (SSD)
+data for the 22 pesticides currently used in the Queensland Department
+of Environment and Science *Pesticide Risk Baseline for the Reef 2050
+Water Quality Improvement Plan*. The Pollutant Risk metric is an
+adaptable version of the pesticide risk metric that allows for the
+addition of new pollutants provided SSD information is available and
+therefore will be more widely useful.
 
 ## Installation
 
-To install this package on R you will need a personal access token. You
-can find instructions for how to create tokens
-[here.](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
-Once you have an access token you can install by running this line in
-your R console:
+To install this package run this line in your R console:
 
 ``` r
-devtools::install_github("https://github.com/qg-qesd/WQI_CatchThemAll.PRM.git", auth_token = key_get("Waterboy_Packages"))
-#replace "key_get("Waterboy_Packages")" with your personal access token
+devtools::install_github("https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM.git")
 ```
 
-## Meet the 22 Pesticides
+## Meet the 22 Pre-loaded Pollutants
 
 <p>
 <h3>9 Photosystem II (PSII) herbicides:</h3>
@@ -122,44 +122,110 @@ Imidacloprid
 </h5>
 </p>
 
-## Pesticide Risk Metric (PRM)
+## Pollutant Risk Metric (PRM)
 
-The combined toxicity risk of these 22 pesticides is estimated by the
-Pesticide Risk Metric. The risk is expressed as the percentage of
-species potentially affected (or conversely, protected) by the combined
-toxicity of the 22 pesticides over a standardised wet season (182 days
-from the first flush event). The current method for calculating PRM
-values as defined by Queensland Department of Envrionment and science
-can be found
+The combined toxicity risk of these 22 pollutants and any additional
+added by the user is estimated by the Pollution Risk Metric. The risk is
+expressed as the percentage of species potentially affected (or
+conversely, protected) by the combined toxicity of all pollutants with
+provided SSD data over a standardized wet season (182 days, is the
+default for Queensland but this duration can be edited in the package,
+from the first flush event). The pollutant risk metric is based on the
+method for calculating pesticide risk metric values as defined by
+Queensland Department of Envrionment and science, which can be found
 [here.](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f)
-The estimates can be compared to the three categories of ecosystem
-condition, as defined in the ![Australian and New Zealand Guidelines for
-Fresh & Marine Water
+The key difference of the PRM is the ability to add more pollutants to
+the metric. The estimates can be compared to the three categories of
+ecosystem condition, as defined in the ![Australian and New Zealand
+Guidelines for Fresh & Marine Water
 Quality:](https://github.com/qg-qesd/WQI_CatchThemAll.PRM/blob/main/images/ANZG_table.PNG)
 
 # How To Catch Them All (Calculate PRM)
 
 The process for calculating PRM estimates using this method is split
-into **3 main parts/functions:**
+into **4 main parts/functions:**
 
-1.  Treating Limit of Reporting (LOR) concentration values
+1.  Adding new pollutant SSD information to the metric
+    (add_your_own_pollutant function)
+2.  Treating Limit of Reporting (LOR) concentration values
     (treat_LORs_all_data function)
-2.  Calculating daily average PRM estimates
+3.  Calculating daily average PRM estimates
     (calculate_daily_average_PRM)
-3.  Calculating wet season average PRM estimates
+4.  Calculating wet season average PRM estimates
     (calculate_wet_season_average_PRM)
 
-An example of how to run this package is provided below:
+An example of how to run this package is provided below using the
+included “Kanto_pollutants” concentration data:
+
+## Adding Your Own Pollutants
+
+Pollutant Risk Metric values are estimated using independent action
+addition of pollutant risk and as such any pollutants can be added to
+the risk metric provided concentration measurements and SSD information
+is provided. This package comes pre loaded with the “pollutant_info”
+look up table which contains all the information for the 22 pollutants
+needed for the functions to estimate PRM values, and to this table new
+pollutants can be added. This can be done using the
+add_your_own_pesticides function instead of creating your own look up
+table seen in the example below
 
 ``` r
 library(CatchThemAll.PRM)
-Pesticide_Info <- CatchThemAll.PRM::Pesticide_Info
-
-kanto_pesticides <- CatchThemAll.PRM::Kanto_pesticides
-head(kanto_pesticides)
+library(DT)
 ```
 
-    ## # A tibble: 6 × 24
+    ## 
+    ## Attaching package: 'DT'
+
+    ## The following objects are masked from 'package:shiny':
+    ## 
+    ##     dataTableOutput, renderDataTable
+
+``` r
+pollutant_info <- CatchThemAll.PRM::pollutant_info #the original 22 pollutants
+
+
+pollutant_info <- add_your_own_pollutant(pollutants = "Poison", #adding one new pollutant
+                                         relative_LORs = 0.023, pollutant_types = "Poison",
+                                         distribution_types = "Log-Normal", scales = 0.09,
+                                         shape_locations = 0.014)
+
+pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollutants
+                                           c("Poison", "Acid", "Sludge"),
+                                         relative_LORs = c(0.03, 0.01, 0.5), 
+                                         pollutant_types = c("Ghost", "Bug", "Poison"),
+                                         distribution_types = c("Log-Normal", "Log-Logistic
+                                                                Log-Logistic", "Burr Type III"),
+                                         scales = c(0.3, 0.002, 2),
+                                         scale_2s = c(NA, 0.04, NA), 
+                                         shape_locations = c(1, 0.07, 3),
+                                         shape_location_2s = c(NA, 0.14, 2.3),
+                                         weights = c(NA, 0.08, NA))
+```
+
+Due to the nature of independent action addition used to calculate this
+metric pollutants that are not measured do not need to be removed but
+their cells must remain empty and for clarity the user should make it
+clear which pollutants have been measured and therefore make up the risk
+estimate.
+
+## Treating Limit of Reporting (LOR) concentration values
+
+How to treat Limit of Reporting values is a common issue in lab
+concentration measurements. This package provides two ways to treat LORs
+using the “treat_LORs_all_data” function. The first is the method
+outlined in the Pesticide Risk Metric methods document above, and the
+second is the replacing all LOR values with zero. An example of how to
+use this function can be seen below and requires a data frame of
+concentration values with a column that matches each pollutant name in
+the pollutant info look up table and a “Site Name” and “Date” column.
+
+``` r
+library(CatchThemAll.PRM)
+head(Kanto_pollutants) #Kanto pollutant concentrations before LOR treatment
+```
+
+    ## # A tibble: 6 × 390
     ##   `Site Name`   Date    Ametryn Atrazine Chlorpyrifos Diuron Fipronil Fluroxypyr
     ##   <chr>         <chr>   <chr>   <chr>    <chr>        <chr>  <chr>    <chr>     
     ## 1 Cerulean City 3/07/2… 0.0051  4.9      <0.02        0.04   <0.02    0.032     
@@ -168,70 +234,125 @@ head(kanto_pesticides)
     ## 4 Cerulean City 24/07/… 0.0065  1.2      <0.05        0.039  <0.02    0.045     
     ## 5 Cerulean City 30/07/… 0.011   0.75     <0.02        0.029  <0.02    1.5       
     ## 6 Cerulean City 8/08/2… 0.012   0.45     <NA>         0.032  <NA>     0.009     
-    ## # ℹ 16 more variables: `Haloxyfop (acid)` <chr>, Hexazinone <chr>,
+    ## # ℹ 382 more variables: `Haloxyfop (acid)` <chr>, Hexazinone <chr>,
     ## #   Imazapic <chr>, Imidacloprid <chr>, `Isoxaflutole metabolite (DKN)` <chr>,
     ## #   MCPA <chr>, Metolachlor <chr>, Metribuzin <chr>,
     ## #   `Metsulfuron methyl` <chr>, Pendimethalin <chr>, Prometryn <chr>,
     ## #   Simazine <chr>, Tebuthiuron <chr>, Terbuthylazine <chr>, Triclopyr <chr>,
-    ## #   `2,4-D` <chr>
+    ## #   `2,4-D` <chr>, `Imidacloprid day 1` <chr>, `Imidacloprid day 2` <chr>,
+    ## #   `Imidacloprid day 3` <chr>, `Imidacloprid day 4` <chr>, …
 
 ``` r
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides, pesticide_info = Pesticide_Info)
-head(Kanto_pesticides_LOR_treated)
+Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
+
+head(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after treatment
 ```
 
-    ## # A tibble: 6 × 25
-    ##   `Site Name`   `Sampling Year` Date       Chlorpyrifos  Fipronil   Imidacloprid
-    ##   <chr>         <chr>           <chr>      <chr>         <chr>      <chr>       
-    ## 1 Cerulean City 2017-2018       2017-07-03 0.00000000001 0.0000000… 0.005       
-    ## 2 Cerulean City 2017-2018       2017-07-10 <NA>          <NA>       0.005       
-    ## 3 Cerulean City 2017-2018       2017-07-18 1.8918e-08    9.552e-08  0.014       
-    ## 4 Cerulean City 2017-2018       2017-07-24 4.7295e-08    9.552e-08  0.002       
-    ## 5 Cerulean City 2017-2018       2017-07-30 1.8918e-08    9.552e-08  0.005       
-    ## 6 Cerulean City 2017-2018       2017-08-08 <NA>          <NA>       0.002       
-    ## # ℹ 19 more variables: `Haloxyfop (acid)` <chr>, Imazapic <chr>,
-    ## #   `Metsulfuron methyl` <chr>, Pendimethalin <chr>, Metolachlor <chr>,
-    ## #   `2,4-D` <chr>, MCPA <chr>, Fluroxypyr <chr>, Triclopyr <chr>,
-    ## #   `Isoxaflutole metabolite (DKN)` <chr>, Ametryn <chr>, Atrazine <chr>,
-    ## #   Prometryn <chr>, Terbuthylazine <chr>, Tebuthiuron <chr>, Simazine <chr>,
-    ## #   Diuron <chr>, Hexazinone <chr>, Metribuzin <chr>
+    ## # A tibble: 6 × 391
+    ##   `Site Name`   `Sampling Year` Date       Chlorpyrifos  Fipronil  Pendimethalin
+    ##   <chr>         <chr>           <chr>      <chr>         <chr>     <chr>        
+    ## 1 Cerulean City 2017-2018       2017-07-03 0.00000000001 0.000000… 0.00000000001
+    ## 2 Cerulean City 2017-2018       2017-07-10 <NA>          <NA>      <NA>         
+    ## 3 Cerulean City 2017-2018       2017-07-18 1.892e-08     9.56e-08  2.36e-06     
+    ## 4 Cerulean City 2017-2018       2017-07-24 4.73e-08      9.56e-08  2.36e-06     
+    ## 5 Cerulean City 2017-2018       2017-07-30 1.892e-08     9.56e-08  2.36e-06     
+    ## 6 Cerulean City 2017-2018       2017-08-08 <NA>          <NA>      <NA>         
+    ## # ℹ 385 more variables: Metolachlor <chr>, MCPA <chr>, Triclopyr <chr>,
+    ## #   Ametryn <chr>, Atrazine <chr>, Prometryn <chr>, Terbuthylazine <chr>,
+    ## #   Simazine <chr>, Diuron <chr>, Imidacloprid <chr>,
+    ## #   `Metsulfuron methyl` <chr>, `2,4-D` <chr>,
+    ## #   `Isoxaflutole metabolite (DKN)` <chr>, Hexazinone <chr>, Metribuzin <chr>,
+    ## #   `Haloxyfop (acid)` <chr>, Imazapic <chr>, Fluroxypyr <chr>,
+    ## #   Tebuthiuron <chr>, `Imidacloprid day 1` <chr>, …
+
+## Calculating daily average PRM estimates
+
+Once LOR values have been treated daily average PRM values can be
+calculated using the “calculate_daily_average_PRM” function. This
+function is designed to run with a dataframe exported from the
+“treat_LORs_all_data” function. However if you skipped the treat LORs
+step the input data frame needs all the same columns and an additional
+column for sampling year. An example is shown below
 
 ``` r
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
+library(CatchThemAll.PRM)
+Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
+head(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after treatment
+```
+
+    ## # A tibble: 6 × 391
+    ##   `Site Name`   `Sampling Year` Date       Chlorpyrifos  Fipronil  Pendimethalin
+    ##   <chr>         <chr>           <chr>      <chr>         <chr>     <chr>        
+    ## 1 Cerulean City 2017-2018       2017-07-03 0.00000000001 0.000000… 0.00000000001
+    ## 2 Cerulean City 2017-2018       2017-07-10 <NA>          <NA>      <NA>         
+    ## 3 Cerulean City 2017-2018       2017-07-18 1.892e-08     9.56e-08  2.36e-06     
+    ## 4 Cerulean City 2017-2018       2017-07-24 4.73e-08      9.56e-08  2.36e-06     
+    ## 5 Cerulean City 2017-2018       2017-07-30 1.892e-08     9.56e-08  2.36e-06     
+    ## 6 Cerulean City 2017-2018       2017-08-08 <NA>          <NA>      <NA>         
+    ## # ℹ 385 more variables: Metolachlor <chr>, MCPA <chr>, Triclopyr <chr>,
+    ## #   Ametryn <chr>, Atrazine <chr>, Prometryn <chr>, Terbuthylazine <chr>,
+    ## #   Simazine <chr>, Diuron <chr>, Imidacloprid <chr>,
+    ## #   `Metsulfuron methyl` <chr>, `2,4-D` <chr>,
+    ## #   `Isoxaflutole metabolite (DKN)` <chr>, Hexazinone <chr>, Metribuzin <chr>,
+    ## #   `Haloxyfop (acid)` <chr>, Imazapic <chr>, Fluroxypyr <chr>,
+    ## #   Tebuthiuron <chr>, `Imidacloprid day 1` <chr>, …
+
+``` r
+#calculate daily PRM
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
 head(Kanto_daily_PRM)
 ```
 
-    ## # A tibble: 6 × 7
+    ## # A tibble: 6 × 8
     ##   `Site Name`   `Sampling Year` Date       `Total PRM` `Insecticide PRM`
     ##   <chr>         <chr>           <chr>            <dbl>             <dbl>
-    ## 1 Cerulean City 2017-2018       2017-07-03       22.9      0.000126     
-    ## 2 Cerulean City 2017-2018       2017-07-10        7.34     0.0000172    
-    ## 3 Cerulean City 2017-2018       2017-07-18       47.0      0.0145       
-    ## 4 Cerulean City 2017-2018       2017-07-24       14.6      0.00851      
-    ## 5 Cerulean City 2017-2018       2017-07-30       17.2      0.00533      
-    ## 6 Cerulean City 2017-2018       2017-08-08        5.28     0.00000000193
-    ## # ℹ 2 more variables: `Other Herbicide PRM` <dbl>, `PSII Herbicide PRM` <dbl>
+    ## 1 Cerulean City 2017-2018       2017-07-03         100               100
+    ## 2 Cerulean City 2017-2018       2017-07-10         100               100
+    ## 3 Cerulean City 2017-2018       2017-07-18         100               100
+    ## 4 Cerulean City 2017-2018       2017-07-24         100               100
+    ## 5 Cerulean City 2017-2018       2017-07-30         100               100
+    ## 6 Cerulean City 2017-2018       2017-08-08         100               100
+    ## # ℹ 3 more variables: `Other Herbicide PRM` <dbl>, `PSII Herbicide PRM` <dbl>,
+    ## #   `Imidacloprid PRM` <dbl>
+
+This package also has a function for quickly plotting daily average PRM
+estimates plot_daily_PRM, for
+![example:](https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM/blob/main/images/plot_example.PNG)
+
+## Calculating wet season average PRM estimates
+
+The final part of this package is for those interested in estimating a
+PRM value for a reoccurring large window of time like a wet season or a
+period of high pollution risk. It involves using multiple imputation to
+predict and average PRM value of the specified window for as many window
+repetitions provided in the data. For example if looking at wet seasons,
+if 4 sampling years worth of concentration data is provided there will
+be a wet season estimate for each year. This is done using the
+“calculate_wet_season_average_PRM” function as shown below.
 
 ``` r
-Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM")
+library(CatchThemAll.PRM)
+Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
+pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+
+
+Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
+                         #to calculate for a specific group define it in "PRM_group ="
 head(Kanto_wet_season_PSII_PRM)
 ```
 
     ## # A tibble: 6 × 3
     ##   `Site Name`   `Sampling Year` `Total PRM`
     ##   <chr>         <chr>                 <dbl>
-    ## 1 Cerulean City 2017-2018             21.0 
-    ## 2 Lavendar Town 2017-2018             37.5 
-    ## 3 Mt Moon       2017-2018              5.97
-    ## 4 Cerulean City 2018-2019             16.8 
-    ## 5 Lavendar Town 2018-2019             31.3 
-    ## 6 Mt Moon       2018-2019              3.94
-
-## Daily Average Plots
-
-This package also has a function for quickly plotting daily average PRM
-estimates plot_daily_PRM, for
-![example:](https://github.com/qg-qesd/WQI_CatchThemAll.PRM/blob/main/images/plot_example.PNG)
+    ## 1 Cerulean City 2017-2018             100. 
+    ## 2 Lavendar Town 2017-2018             100. 
+    ## 3 Mt Moon       2017-2018              99.7
+    ## 4 Cerulean City 2018-2019             100. 
+    ## 5 Lavendar Town 2018-2019             100. 
+    ## 6 Mt Moon       2018-2019              98.8
 
 ## Disclaimer
 
