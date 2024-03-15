@@ -19,7 +19,8 @@ Imports:
     stats,
     VGAM,
     plotly,
-    zoo
+    zoo,
+    DT
 Suggests: 
     knitr,
     rmarkdown,
