@@ -99,8 +99,8 @@ Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
 plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
-               wet_seaon_length = 182, #length of wet season or high risk window
-               PRM_group = "PSII PRM") #PRM group to plot, for all PRM = "Total PRM"
+               wet_season_length = 182, #length of wet season or high risk window
+               PRM_group = "PSII Herbicide PRM") #PRM group to plot, for all PRM = "Total PRM"
 
 ```
 
@@ -114,7 +114,7 @@ Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = 
 
 head(Kanto_wet_season_Total_PRM)
 
-Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "PSII PRM") #this calculates the wet season average PRM for only PSII pollutants
+Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "PSII Herbicide PRM") #this calculates the wet season average PRM for only PSII pollutants
 
 head(Kanto_wet_season_PSII_PRM)
 

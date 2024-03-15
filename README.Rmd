@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivty Distibutions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below:
 
 ```{r out.width = '70%', echo = FALSE}
-knitr::include_graphics("img/Guidelines Table.png")
+knitr::include_graphics("vignettes/img/Guidelines Table.png")
 ```
 
 The Pollutant Risk metric is an adaptable version of the pesticide risk metric that allows for the addition of new pollutants provided SSD information is available and will hopefully be more widely useful.
@@ -74,11 +74,11 @@ Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
 plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
-               wet_seaon_length = 182, #length of wet season or high risk window
-               PRM_group = "PSII PRM") #PRM group to plot, for all PRM = "Total PRM
+               wet_season_length = 182, #length of wet season or high risk window
+               PRM_group = "Total PRM") #PRM group to plot, for all PRM = "Total PRM
 
 #4.Calculate Wet Season Average PRM
-Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
+Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
                          #to calculate for a specific group define it in "PRM_group ="
 head(Kanto_wet_season_Total_PRM)
 
