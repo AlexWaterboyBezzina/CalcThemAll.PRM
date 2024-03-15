@@ -3,8 +3,8 @@ library(vroom)
 library(dplyr)
 library(janitor)
 
-Kanto_pollutants <- vroom::vroom("~/GitHub/Kanto_Pesticides.csv")
-names(Kanto_pollutants)[25:389] <- sub("^", "Imidacloprid day ", names(Kanto_pollutants)[25:389])
+Kanto_pollutants <- vroom::vroom("~/GitHub/Kanto_pollutants_OG22.csv")
+Kanto_pollutants <- Kanto_pollutants %>% select(-1)
 #Kanto_pesticides <- Kanto_pesticides %>% clean_names()
 #Kanto_pesticides <- Kanto_pesticides %>% rename(any_of(c("Site Name" = "site_name", "Date" = "date", "Ametryn" = "ametryn", "Atrazine" = "atrazine", "Chlorpyrifos" = "chlorpyrifos", "Diuron" = "diuron", "Fipronil" = "fipronil", "Fluroxypyr" = "fluroxypyr",
  #                                                        "Haloxyfop (acid)" = "haloxyfop_acid", "Hexazinone" = "hexazinone", "Imazapic" = "imazapic", "Imidacloprid" = "imidacloprid", "Isoxaflutole metabolite (DKN)" = "isoxaflutole_metabolite_dkn",

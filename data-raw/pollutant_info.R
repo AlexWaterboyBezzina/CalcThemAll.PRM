@@ -39,5 +39,6 @@
                      #  scales = 2.09364, shape_locations = 0.835654, pollutant_info = pollutant_info)
 
 #write_csv(pollutant_info, "pollutant_info_imid.csv")
-pollutant_info <- read.csv("~/GitHub/pollutant_info_imid.csv")
+pollutant_info <- read.csv("~/GitHub/pollutant_info_OG22.csv")
+pollutant_info <- pollutant_info %>% select(-1)
 #usethis::use_data(pollutant_info, overwrite = TRUE)

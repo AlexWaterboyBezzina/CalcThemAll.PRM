@@ -21,6 +21,8 @@ Imports:
     plotly,
     zoo
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Depends: 
@@ -28,3 +30,4 @@ Depends:
 LazyData: true
 Remotes: 
     salauer/gdist
+VignetteBuilder: knitr

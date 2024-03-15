@@ -2,64 +2,39 @@
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(keyring)
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
 ```
 
 # CatchThemAll.PRM
 
-R package for calculating **Pollutant Risk Metric** (PRM) values. The pollutant risk metric is based on the Queensland Department of Environment and Science's **Pesticide Risk Metric** and as such this package comes pre-loaded with species sensitivity distribution (SSD) data for the 22 pesticides currently used in the Queensland Department of Environment and Science *Pesticide Risk Baseline for the Reef 2050 Water Quality Improvement Plan*. The Pollutant Risk metric is an adaptable version of the pesticide risk metric that allows for the addition of new pollutants provided SSD information is available and therefore will be more widely useful.
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivty Distibutions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below:
+
+```{r out.width = '70%', echo = FALSE}
+knitr::include_graphics("img/Guidelines Table.png")
+```
+
+The Pollutant Risk metric is an adaptable version of the pesticide risk metric that allows for the addition of new pollutants provided SSD information is available and will hopefully be more widely useful.
 
 ## Installation
 
-To install this package run this line in your R console:
+You can install the development version of CatchThemAll.PRM from [GitHub](https://github.com/) with:
 
-```{r install, echo = T, results = "hide", message=FALSE}
-devtools::install_github("https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM.git")
-
+``` r
+# install.packages("devtools")
+devtools::install_github("AlexWaterboyBezzina/CatchThemAll.PRM")
 ```
-
-## Meet the 22 Pre-loaded Pollutants
-
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(fontawesome)
-library(shiny)
-p(h3("9 Photosystem II (PSII) herbicides:"),
-h5(p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Ametryn"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Atrazine"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Diuron"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Hexazinone"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Metribuzin"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Prometryn"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Simazine"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Tebuthiuron"),
-p(fa(name = "sun-plant-wilt", fill = "#28b78d", prefer_type = "solid"), "Terbuthylazine")),
-
-h3("10 Other herbicides:"),
-h5(p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Haloxyfop (acid)"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Imazapic"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Metsulfuron methyl"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Pendimethalin"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Metolachlor"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "2,4-D"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "MCPA"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Fluroxypyr"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Triclopyr"),
-p(fa(name = "flask", fill = "#ff5964", prefer_type = "solid"), "Isoxaflutole metabolite (DKN)")),
-
-h3("3 Insecticides:"),
-h5(p(fa(name = "bug", fill = "#feab3a", prefer_type = "solid"), "Chlorpyrifos"),
-p(fa(name = "bug", fill = "#feab3a", prefer_type = "solid"), "Fipronil"),
-p(fa(name = "bug", fill = "#feab3a", prefer_type = "solid"), "Imidacloprid")))
-
-```
-
-## Pollutant Risk Metric (PRM)
-
-The combined toxicity risk of these 22 pollutants and any additional added by the user is estimated by the Pollution Risk Metric. The risk is expressed as the percentage of species potentially affected (or conversely, protected) by the combined toxicity of all pollutants with provided SSD data over a standardized wet season (182 days, is the default for Queensland but this duration can be edited in the package, from the first flush event). The pollutant risk metric is based on the method for calculating pesticide risk metric values as defined by Queensland Department of Envrionment and science, which can be found [here.](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) The key difference of the PRM is the ability to add more pollutants to the metric. The estimates can be compared to the three categories of ecosystem condition, as defined in the ![Australian and New Zealand Guidelines for Fresh & Marine Water Quality:](https://github.com/qg-qesd/WQI_CatchThemAll.PRM/blob/main/images/ANZG_table.PNG)
-
-# How To Catch Them All (Calculate PRM)
+# How To Catch Them All (Calculate PRM Quick Version)
 
 The process for calculating PRM estimates using this method is split into **4 main parts/functions:**
 
@@ -70,22 +45,9 @@ The process for calculating PRM estimates using this method is split into **4 ma
 
 An example of how to run this package is provided below using the included "Kanto_pollutants" concentration data:
 
-
-## Adding Your Own Pollutants
-
-Pollutant Risk Metric values are estimated using independent action addition of pollutant risk and as such any pollutants can be added to the risk metric provided concentration measurements and SSD information is provided. This package comes pre loaded with the "pollutant_info" look up table which contains all the information for the 22 pollutants needed for the functions to estimate PRM values, and to this table new pollutants can be added. This can be done using the add_your_own_pesticides function instead of creating your own look up table seen in the example below
-
-```{r adding_example, echo=TRUE, warning=FALSE}
+```{r wet_season_example, echo=TRUE, warning=FALSE}
 library(CatchThemAll.PRM)
-library(DT)
-pollutant_info <- CatchThemAll.PRM::pollutant_info #the original 22 pollutants
-
-
-pollutant_info <- add_your_own_pollutant(pollutants = "Poison", #adding one new pollutant
-                                         relative_LORs = 0.023, pollutant_types = "Poison",
-                                         distribution_types = "Log-Normal", scales = 0.09,
-                                         shape_locations = 0.014)
-
+#1.Add new pollutants to pollutant_info table
 pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollutants
                                            c("Poison", "Acid", "Sludge"),
                                          relative_LORs = c(0.03, 0.01, 0.5), 
@@ -98,68 +60,34 @@ pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollu
                                          shape_location_2s = c(NA, 0.14, 2.3),
                                          weights = c(NA, 0.08, NA))
 
-
-```
-
-Due to the nature of independent action addition used to calculate this metric pollutants that are not measured do not need to be removed but their cells must remain empty and for clarity the user should make it clear which pollutants have been measured and therefore make up the risk estimate.
-
-
-## Treating Limit of Reporting (LOR) concentration values
-
-How to treat Limit of Reporting values is a common issue in lab concentration measurements. This package provides two ways to treat LORs using the "treat_LORs_all_data" function. The first is the method outlined in the Pesticide Risk Metric methods document above, and the second is the replacing all LOR values with zero. An example of how to use this function can be seen below and requires a data frame of concentration values with a column that matches each pollutant name in the pollutant info look up table and a "Site Name" and "Date" column.
-
-```{r LOR_example, echo=TRUE, warning=FALSE}
-library(CatchThemAll.PRM)
-head(Kanto_pollutants) #Kanto pollutant concentrations before LOR treatment
-
+#2.Treat LOR Values
 Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
 pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
 
-head(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after treatment
-
-```
-
-
-## Calculating daily average PRM estimates
-
-Once LOR values have been treated daily average PRM values can be calculated using the "calculate_daily_average_PRM" function. This function is designed to run with a dataframe exported from the "treat_LORs_all_data" function. However if you skipped the treat LORs step the input data frame needs all the same columns and an additional column for sampling year. An example is shown below
-
-```{r daily_example, echo=TRUE, warning=FALSE}
-library(CatchThemAll.PRM)
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
-head(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after treatment
-
-#calculate daily PRM
+#3.Calculate Daily Average PRM
 Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
 head(Kanto_daily_PRM)
 
-```
+Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
+ dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
 
-This package also has a function for quickly plotting daily average PRM estimates plot_daily_PRM, for ![example:](https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM/blob/main/images/plot_example.PNG)
+plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
+               wet_season_start = "2017-10-02", #start date of the wet season or high risk window
+                                                #this is optional and can be removed with = NULL
+               wet_seaon_length = 182, #length of wet season or high risk window
+               PRM_group = "PSII PRM") #PRM group to plot, for all PRM = "Total PRM
 
-
-## Calculating wet season average PRM estimates
-
-The final part of this package is for those interested in estimating a PRM value for a reoccurring large window of time like a wet season or a period of high pollution risk. It involves using multiple imputation to predict and average PRM value of the specified window for as many window repetitions provided in the data. For example if looking at wet seasons, if 4 sampling years worth of concentration data is provided there will be a wet season estimate for each year. This is done using the "calculate_wet_season_average_PRM" function as shown below.
-
-```{r wet_season_example, echo=TRUE, warning=FALSE}
-library(CatchThemAll.PRM)
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "WQI")
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
-
-
+#4.Calculate Wet Season Average PRM
 Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
                          #to calculate for a specific group define it in "PRM_group ="
-head(Kanto_wet_season_PSII_PRM)
+head(Kanto_wet_season_Total_PRM)
 
 ```
 
 
 ## Disclaimer
 
-**This package is still in development**. Information is from several sources and, as such, does not necessarily represent government or departmental policy. While every care is taken to ensure the accuracy of this information, the Department of Environment and Science makes no representations or warranties relating to  accuracy, reliability, completeness, currency or suitability for any particular purpose and disclaims all responsibility and all liability (including without limitation, liability in negligence) for all expenses, losses, damages (including indirect or consequential damage) and costs that might be incurred as a result of any use or of reliance on the information and calculated data in any way and for any reason.
+Information is from several sources and, as such, does not necessarily represent government or departmental policy. While every care is taken to ensure the accuracy of this information, the Department of Environment and Science makes no representations or warranties relating to  accuracy, reliability, completeness, currency or suitability for any particular purpose and disclaims all responsibility and all liability (including without limitation, liability in negligence) for all expenses, losses, damages (including indirect or consequential damage) and costs that might be incurred as a result of any use or of reliance on the information and calculated data in any way and for any reason.
 
 ## Citation
 
