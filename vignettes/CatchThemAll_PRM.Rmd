@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivty Distibutions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality and Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) (refereed to in this package as  the WQI Method) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below:
 
-```{r out.width = '70%', echo = FALSE}
+```{r out.width = '80%', echo = FALSE}
 knitr::include_graphics("img/guidelines_table.png")
 ```
 
@@ -32,13 +32,13 @@ One of the key functions of this package is **the ability to add your own pollut
 library(CatchThemAll.PRM)
 library(DT)
 pollutant_info <- CatchThemAll.PRM::pollutant_info #the original 22 pollutants
-datatable(pollutant_info)
+datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
 pollutant_info <- add_your_own_pollutant(pollutants = "Poison", #adding one new pollutant
                                          relative_LORs = 0.023, pollutant_types = "Poison",
                                          distribution_types = "Log-Normal", scales = 0.09,
                                          shape_locations = 0.014)
-datatable(pollutant_info)
+datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
 pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollutants
                                            c("Poison", "Acid", "Sludge"),
@@ -51,7 +51,7 @@ pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollu
                                          shape_locations = c(1, 0.07, 3),
                                          shape_location_2s = c(NA, 0.14, 2.3),
                                          weights = c(NA, 0.08, NA))
-datatable(pollutant_info)
+datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
 ```
 
@@ -63,13 +63,13 @@ How to treat Limit of Reporting values is a common issue in lab concentration me
 
 ```{r treat_LORs_all_data, echo=TRUE, warning=FALSE}
 
-datatable(Kanto_pollutants) #Kanto pollutant concentrations before LOR treatment
+datatable(Kanto_pollutants, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pollutant concentrations before LOR treatment
 
 Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants, #this is the pollutant concentration dataset to be treated
 pollutant_info = CatchThemAll.PRM::pollutant_info, #this specifies the pollutant info look-up table
 treatment_method = "WQI") #this selects the LOR treatment method
 
-datatable(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after treatment, LORs should be replaced with either 0.0000001 or LOR replacement value
+datatable(Kanto_pollutants_LOR_treated, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pollutant concentrations after treatment, LORs should be replaced with either 0.0000001 or LOR replacement value
 
 ```
 
@@ -91,7 +91,7 @@ head(Kanto_daily_PRM)
 
 This package also contains a function to **plot daily PRM for a single site and sampling year**. "plot_daily_PRM" creates an interactive plotly plot for a single PRM group/type colour coded to match the PRM legend table shown at the beginning of this vignette.
 
-```{r plot_daily_PRM, echo=TRUE, warning=FALSE}
+```{r plot_daily_PRM, echo=TRUE, warning=FALSE, out.width = '100%'}
 #filter daily PRM data for a single site and sampling year
 Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
  dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
