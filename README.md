@@ -20,7 +20,7 @@ These PRM values can be compared to the three categories of ecosystem
 condition, as defined in the Australian and New Zealand Guidelines for
 Fresh & Marine Water Quality seen in the table below:
 
-<img src="vignettes/img/guidelines_table.png" width="70%" />
+<img src="vignettes/img/guidelines_table.png" width="80%" />
 
 The Pollutant Risk metric is an adaptable version of the pesticide risk
 metric that allows for the addition of new pollutants provided SSD
@@ -78,12 +78,12 @@ head(Kanto_daily_PRM)
 #> # A tibble: 6 × 7
 #>   `Site Name`   `Sampling Year` Date       `Total PRM` `Insecticide PRM`
 #>   <chr>         <chr>           <chr>            <dbl>             <dbl>
-#> 1 Cerulean City 2017-2018       2017-07-03        94.1     0.000126     
-#> 2 Cerulean City 2017-2018       2017-07-10        92.8     0.0000172    
-#> 3 Cerulean City 2017-2018       2017-07-18        95.9     0.0145       
-#> 4 Cerulean City 2017-2018       2017-07-24        93.5     0.00851      
-#> 5 Cerulean City 2017-2018       2017-07-30        93.6     0.00533      
-#> 6 Cerulean City 2017-2018       2017-08-08        92.7     0.00000000193
+#> 1 Cerulean City 2017-2018       2017-07-03       22.9      0.000126     
+#> 2 Cerulean City 2017-2018       2017-07-10        7.34     0.0000172    
+#> 3 Cerulean City 2017-2018       2017-07-18       47.0      0.0145       
+#> 4 Cerulean City 2017-2018       2017-07-24       14.6      0.00851      
+#> 5 Cerulean City 2017-2018       2017-07-30       17.2      0.00533      
+#> 6 Cerulean City 2017-2018       2017-08-08        5.28     0.00000000193
 #> # ℹ 2 more variables: `Other Herbicide PRM` <dbl>, `PSII Herbicide PRM` <dbl>
 
 Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
@@ -93,8 +93,12 @@ plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
                wet_season_length = 182, #length of wet season or high risk window
-               PRM_group = "Total PRM") #PRM group to plot, for all PRM = "Total PRM
+               PRM_group = "PSII Herbicide PRM") #PRM group to plot, for all PRM = "Total PRM
+```
 
+<img src="vignettes/img/daily_plot.png" width="80%" />
+
+``` r
 #4.Calculate Wet Season Average PRM
 Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
                          #to calculate for a specific group define it in "PRM_group ="
@@ -102,12 +106,12 @@ head(Kanto_wet_season_Total_PRM)
 #> # A tibble: 6 × 3
 #>   `Site Name`   `Sampling Year` `Total PRM`
 #>   <chr>         <chr>                 <dbl>
-#> 1 Cerulean City 2017-2018              93.8
-#> 2 Lavendar Town 2017-2018              95.0
-#> 3 Mt Moon       2017-2018              90.6
-#> 4 Cerulean City 2018-2019              93.0
-#> 5 Lavendar Town 2018-2019              94.5
-#> 6 Mt Moon       2018-2019              90.2
+#> 1 Cerulean City 2017-2018             21.0 
+#> 2 Lavendar Town 2017-2018             37.5 
+#> 3 Mt Moon       2017-2018              5.96
+#> 4 Cerulean City 2018-2019             16.9 
+#> 5 Lavendar Town 2018-2019             31.2 
+#> 6 Mt Moon       2018-2019              3.93
 ```
 
 ## Disclaimer

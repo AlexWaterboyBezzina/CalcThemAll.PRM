@@ -97,6 +97,7 @@ Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
  dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
 
 plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
+               title = F, #this toggles the title on and off
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
                wet_season_length = 182, #length of wet season or high risk window
