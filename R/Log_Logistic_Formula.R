@@ -24,6 +24,6 @@
 #'
 Log_Logistic_Formula <- function(concentration, scale, shape_location){
   concentration <- as.numeric(concentration)
-  PRM <- 100*stats::plogis(q = log(concentration), location = shape_location, scale = scale)
+  PRM <- 1/(1+'^'((concentration/scale), (-1*shape_location)))*100
   PRM
 }
