@@ -20,7 +20,7 @@ These PRM values can be compared to the three categories of ecosystem
 condition, as defined in the Australian and New Zealand Guidelines for
 Fresh & Marine Water Quality seen in the table below:
 
-<img src="vignettes/img/Guidelines Table.png" width="70%" />
+<img src="vignettes/img/guidelines_table.png" width="70%" />
 
 The Pollutant Risk metric is an adaptable version of the pesticide risk
 metric that allows for the addition of new pollutants provided SSD
