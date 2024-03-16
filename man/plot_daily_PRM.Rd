@@ -24,9 +24,9 @@ site sampling year.}
 \item{wet_season_length}{The length of the wet season in days.}
 
 \item{PRM_group}{This specifies the name of the column to plot.
-The daily average calculations gives PRM for each pesticide type and
+The daily average calculations gives PRM for each pollutant type and
 a total in different columns. "Total" is set as
-the default as it is the PRM value for all pesticides.}
+the default as it is the PRM value for all pollutants.}
 
 \item{title}{TRUE or FALSE value to include a title.}
 
