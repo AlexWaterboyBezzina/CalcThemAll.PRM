@@ -1,6 +1,6 @@
 Package: CatchThemAll.PRM
 Title: Calculate pesticide risk from concentration values...Catch them all
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Alexander", "Bezzina", ,"alexander.bezzina@des.qld.gov.au", role = c("aut", "cre")),
     person("Catherine", "Neelamraju", ,"c.neelamraju@uq.edu.au", role = "aut"),
