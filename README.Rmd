@@ -13,15 +13,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CatchThemAll.PRM
+# CatchThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivty Distibutions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below:
+This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivty Distibutions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below.
 
 ```{r out.width = '80%', echo = FALSE}
-knitr::include_graphics("vignettes/img/guidelines_table.png")
+knitr::include_graphics("man/figures/guidelines_table.png")
 ```
 
 The Pollutant Risk metric is an adaptable version of the pesticide risk metric that allows for the addition of new pollutants provided SSD information is available and will hopefully be more widely useful.
@@ -38,12 +38,12 @@ devtools::install_github("AlexWaterboyBezzina/CatchThemAll.PRM")
 
 The process for calculating PRM estimates using this method is split into **4 main parts/functions:**
 
-1. Adding new pollutant SSD information to the metric (add_your_own_pollutant function)
-2. Treating Limit of Reporting (LOR) concentration values (treat_LORs_all_data function)
-3. Calculating daily average PRM estimates (calculate_daily_average_PRM)
-4. Calculating wet season average PRM estimates (calculate_wet_season_average_PRM)
+1. Adding new pollutant SSD information to the metric `add_your_own_pollutant()`
+2. Treating Limit of Reporting (LOR) concentration values `treat_LORs_all_data()`
+3. Calculating daily average PRM estimates `calculate_daily_average_PRM()`
+4. Calculating wet season average PRM estimates `calculate_wet_season_average_PRM()`
 
-An example of how to run this package is provided below using the included "Kanto_pollutants" concentration data:
+An example of how to run this package is provided below using the included `Kanto_pollutants` concentration data.
 
 ```{r example_1, echo=TRUE, warning=FALSE}
 library(CatchThemAll.PRM)
@@ -79,7 +79,7 @@ plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
 ```
 
 ```{r plot, out.width = '80%', echo = FALSE}
-knitr::include_graphics("vignettes/img/daily_plot.png")
+knitr::include_graphics("man/figures/daily_plot.png")
 ```
 
 ```{r example_2, echo=TRUE, warning=FALSE}

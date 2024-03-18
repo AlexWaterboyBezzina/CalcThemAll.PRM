@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CatchThemAll.PRM
+# CatchThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -18,9 +18,9 @@ used in the Reef 2050 Water Quality Improvement Plan, with the main
 difference being the ability to add different pollutants to be measured.
 These PRM values can be compared to the three categories of ecosystem
 condition, as defined in the Australian and New Zealand Guidelines for
-Fresh & Marine Water Quality seen in the table below:
+Fresh & Marine Water Quality seen in the table below.
 
-<img src="vignettes/img/guidelines_table.png" width="80%" />
+<img src="man/figures/guidelines_table.png" width="80%" />
 
 The Pollutant Risk metric is an adaptable version of the pesticide risk
 metric that allows for the addition of new pollutants provided SSD
@@ -42,16 +42,16 @@ The process for calculating PRM estimates using this method is split
 into **4 main parts/functions:**
 
 1.  Adding new pollutant SSD information to the metric
-    (add_your_own_pollutant function)
+    `add_your_own_pollutant()`
 2.  Treating Limit of Reporting (LOR) concentration values
-    (treat_LORs_all_data function)
+    `treat_LORs_all_data()`
 3.  Calculating daily average PRM estimates
-    (calculate_daily_average_PRM)
+    `calculate_daily_average_PRM()`
 4.  Calculating wet season average PRM estimates
-    (calculate_wet_season_average_PRM)
+    `calculate_wet_season_average_PRM()`
 
 An example of how to run this package is provided below using the
-included “Kanto_pollutants” concentration data:
+included `Kanto_pollutants` concentration data.
 
 ``` r
 library(CatchThemAll.PRM)
@@ -96,7 +96,7 @@ plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
                PRM_group = "PSII Herbicide PRM") #PRM group to plot, for all PRM = "Total PRM
 ```
 
-<img src="vignettes/img/daily_plot.png" width="80%" />
+<img src="man/figures/daily_plot.png" width="80%" />
 
 ``` r
 #4.Calculate Wet Season Average PRM
@@ -106,12 +106,12 @@ head(Kanto_wet_season_Total_PRM)
 #> # A tibble: 6 × 3
 #>   `Site Name`   `Sampling Year` `Total PRM`
 #>   <chr>         <chr>                 <dbl>
-#> 1 Cerulean City 2017-2018             21.0 
-#> 2 Lavendar Town 2017-2018             37.5 
-#> 3 Mt Moon       2017-2018              5.96
+#> 1 Cerulean City 2017-2018             21.1 
+#> 2 Lavendar Town 2017-2018             37.4 
+#> 3 Mt Moon       2017-2018              5.95
 #> 4 Cerulean City 2018-2019             16.9 
 #> 5 Lavendar Town 2018-2019             31.2 
-#> 6 Mt Moon       2018-2019              3.93
+#> 6 Mt Moon       2018-2019              3.94
 ```
 
 ## Disclaimer
