@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 This package provides code for estimating combined toxicity of measured
-pollutants using their Species Sensitivty Distibutions (SSDs) in a
+pollutants using their Species Sensitivity Distributions (SSDs) in a
 multi-substance potentially affected fraction approach. The resulting
 value is a estimate of the percentage of species impacted by the
 measured pollutants, a value which is referred to in this package as the
@@ -114,7 +114,7 @@ head(Kanto_wet_season_Total_PRM)
 #>   <chr>         <chr>                 <dbl>
 #> 1 Cerulean City 2017-2018             21.1 
 #> 2 Lavendar Town 2017-2018             37.5 
-#> 3 Mt Moon       2017-2018              5.98
+#> 3 Mt Moon       2017-2018              5.99
 #> 4 Cerulean City 2018-2019             16.9 
 #> 5 Lavendar Town 2018-2019             31.2 
 #> 6 Mt Moon       2018-2019              3.94
