@@ -6,6 +6,9 @@
 #'
 #' @return A plotly shape
 #' @export
+#'
+#' @examples
+#' shape <- plot_wet_season_window(wet_season_start = "2017-08-01")
 plot_wet_season_window <- function(wet_season_start = 0, wet_season_length = 182) {
   wet_season_start <- as.POSIXct(wet_season_start, format = "%Y-%m-%d")
   wet_season_end <- as.POSIXct(as.Date(wet_season_start,

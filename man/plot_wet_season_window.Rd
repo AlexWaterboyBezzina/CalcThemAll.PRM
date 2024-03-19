@@ -18,3 +18,6 @@ A plotly shape
 \description{
 Plot Wet Season Window Box on Daily PRM Plot
 }
+\examples{
+shape <- plot_wet_season_window(wet_season_start = "2017-08-01")
+}

@@ -105,6 +105,14 @@ plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
 
 ```
 
+## PRM Data Table
+
+This package also contains a function to create a **Data Table colour coded by PRM risk level**. `PRM_DT()` creates an interactive data table with the ability to choose if colour is the cell fill or text.
+
+```{r PRM_DT, echo=TRUE, warning=FALSE, out.width = '100%'}
+PRM_DT(PRM_data = Kanto_daily_PRM, fill_cols = "Total PRM",
+ colour_cols = c("PSII Herbicide PRM", "Other Herbicide PRM", "Insecticide PRM"))
+```
 
 ## Calculate Wet Season Average PRM
 

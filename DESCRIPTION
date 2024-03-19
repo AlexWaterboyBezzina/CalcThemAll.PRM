@@ -1,11 +1,18 @@
 Package: CatchThemAll.PRM
-Title: Calculate pesticide risk from concentration values...Catch them all
+Title: Calculate Pollutant Risk Metric (PRM) values from pollutant concentrations...Catch them all
 Version: 1.0.0
 Authors@R: c(
-    person("Alexander", "Bezzina", ,"alexander.bezzina@des.qld.gov.au", role = c("aut", "cre")),
-    person("Catherine", "Neelamraju", ,"c.neelamraju@uq.edu.au", role = "aut"),
-    person("Jennifer", "Strauss", ,"jennifer.strauss@des.qld.gov.au", role = "aut"))
-Description: This packages contains functions which can be used to calculate Pesticide Risk Metric values for concentrations of pesticides with known species sensative distribution (SSD) models. Pesticides provided by this package have all be validated however if the user has their own pesticides with SSD values they can append them to the Pesties info table to include them in calculations.
+    person("Alexander", "Bezzina", ,"alex.h.bezzina@gmail.com", 
+    role = c("aut", "cre", "cph")),
+    person("Catherine", "Neelamraju", ,"c.neelamraju@uq.edu.au",
+    role = "aut"),
+    person("Jennifer", "Strauss", ,"jennifer.strauss@des.qld.gov.au",
+    role = "aut"))
+Description: This packages contains functions which can be used to calculate
+    Pollutant Risk Metric values for concentrations of multiple pollutants with known
+    species sensative distributions (SSDs). Pollutants provided by this package have 
+    all be validated however if the user has their own pollutants with SSD values they
+    can append them to the pollutant_info table to include them in estimates.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

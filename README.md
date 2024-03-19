@@ -28,6 +28,12 @@ information is available and will hopefully be more widely useful.
 
 ## Installation
 
+The easiest way to install this package is from CRAN
+
+``` r
+install.packages("CatchThemAll.PRM")
+```
+
 You can install the development version of CatchThemAll.PRM from
 [GitHub](https://github.com/) with:
 
@@ -111,7 +117,7 @@ head(Kanto_wet_season_Total_PRM)
 #> 3 Mt Moon       2017-2018              5.95
 #> 4 Cerulean City 2018-2019             16.9 
 #> 5 Lavendar Town 2018-2019             31.2 
-#> 6 Mt Moon       2018-2019              3.94
+#> 6 Mt Moon       2018-2019              3.93
 ```
 
 ## Disclaimer

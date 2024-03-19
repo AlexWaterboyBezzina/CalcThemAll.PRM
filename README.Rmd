@@ -28,6 +28,12 @@ The Pollutant Risk metric is an adaptable version of the pesticide risk metric t
 
 ## Installation
 
+The easiest way to install this package is from CRAN
+
+``` r
+install.packages("CatchThemAll.PRM")
+```
+
 You can install the development version of CatchThemAll.PRM from [GitHub](https://github.com/) with:
 
 ``` r
