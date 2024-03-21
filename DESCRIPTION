@@ -4,9 +4,11 @@ Version: 1.0.0
 Authors@R: c(
     person("Alexander", "Bezzina", ,"alex.h.bezzina@gmail.com", 
     role = c("aut", "cre", "cph")),
+    person("Jennifer", "Strauss", ,"jennifer.strauss@des.qld.gov.au",
+    role = "aut"),
     person("Catherine", "Neelamraju", ,"c.neelamraju@uq.edu.au",
     role = "aut"),
-    person("Jennifer", "Strauss", ,"jennifer.strauss@des.qld.gov.au",
+    person("Hayley", "Kaminski", ,"hayley.kaminski@des.qld.gov.au",
     role = "aut"))
 Description: This packages contains functions which can be used to calculate
     Pollutant Risk Metric values for concentrations of multiple pollutants with known
