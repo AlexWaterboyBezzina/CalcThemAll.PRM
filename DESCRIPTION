@@ -1,5 +1,5 @@
 Package: CatchThemAll.PRM
-Title: Calculate Pollutant Risk Metric (PRM) values from pollutant concentrations...Catch them all
+Title: Calculate Pollutant Risk Metric (PRM) Values from Pollutant Concentrations...Catch Them All
 Version: 1.0.0
 Authors@R: c(
     person("Alexander", "Bezzina", ,"alex.h.bezzina@gmail.com", 
@@ -10,18 +10,17 @@ Authors@R: c(
     role = "aut"),
     person("Hayley", "Kaminski", ,"hayley.kaminski@des.qld.gov.au",
     role = "aut"))
-Description: This packages contains functions which can be used to calculate
-    Pollutant Risk Metric values for concentrations of multiple pollutants with known
-    species sensative distributions (SSDs). Pollutants provided by this package have 
-    all be validated however if the user has their own pollutants with SSD values they
-    can append them to the pollutant_info table to include them in estimates.
+Description: Contains functions which can be used to calculate Pollutant Risk Metric 
+    values for concentrations of multiple pollutants with known species sensative 
+    distributions (SSDs). Pollutants provided by this package have all be validated
+    however if the user has their own pollutants with SSD values they can append them
+    to the pollutant_info table to include them in estimates.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports: 
     dplyr,
-    gdist (>= 0.1.0),
     lubridate,
     magrittr,
     MASS,
@@ -38,6 +37,4 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 2.10)
 LazyData: true
-Remotes: 
-    salauer/gdist
 VignetteBuilder: knitr

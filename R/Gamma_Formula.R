@@ -27,6 +27,7 @@
 # Compute the Gamma CDF for the given concentration to find PRM
 Gamma_Formula <- function(concentration, shape_location, scale){
   concentration <- as.numeric(concentration)
-  PRM <- 100*gdist::pdist("gamma", q = concentration, shape = shape_location, scale = scale)
+  PRM <- 100*stats::pgamma(q = concentration, shape = shape_location, scale = scale)
   PRM
 }
+
