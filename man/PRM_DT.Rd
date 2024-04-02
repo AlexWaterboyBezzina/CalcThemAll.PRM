@@ -9,10 +9,10 @@ PRM_DT(PRM_data, fill_cols = NULL, colour_cols = NULL)
 \arguments{
 \item{PRM_data}{a data frame of either daily average or wet season PRM values}
 
-\item{fill_cols}{A vector of column names of pollutant groups to fill colour
+\item{fill_cols}{A vector of column names of pesticide groups to fill colour
 with corresponding PRM risk category}
 
-\item{colour_cols}{A vector of column names of pollutant groups to colour
+\item{colour_cols}{A vector of column names of pesticide groups to colour
 text with corresponding PRM risk category}
 }
 \value{
@@ -22,9 +22,9 @@ a data table colour coded to PRM risk
 PRM Data Table Function
 }
 \examples{
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+pesticide_info = CatchThemAll.PRM::pesticide_info)
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 PRM_DT(PRM_data = Kanto_daily_PRM, fill_cols = "Total PRM",
 colour_cols = c("PSII Herbicide PRM", "Other Herbicide PRM", "Insecticide PRM"))
 

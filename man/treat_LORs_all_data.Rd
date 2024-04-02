@@ -6,23 +6,23 @@
 \usage{
 treat_LORs_all_data(
   raw_data,
-  pollutant_info = CatchThemAll.PRM::pollutant_info,
+  pesticide_info = CatchThemAll.PRM::pesticide_info,
   wet_season_split = 7,
   treatment_method = "WQI"
 )
 }
 \arguments{
-\item{raw_data}{A data set of raw pollutant concentration values in individual columns
-that match the pollutant names in the "pollutant_info" data frame.
+\item{raw_data}{A data set of raw pesticide concentration values in individual columns
+that match the pesticide names in the "pesticide_info" data frame.
 This data set should also include a "Date" column and "Site Name" column.
-A reference data set can be seen in the "Kanto_pollutants" data frame provided in this package,
+A reference data set can be seen in the "Kanto_pesticides" data frame provided in this package,
 your data should mirror these column headings.}
 
-\item{pollutant_info}{The reference table which contains all relevant information for
-calculations. It is recommended that the "pollutant_info" data set included in this
-package be used and if you wish to include more or less pollutants you can appended
+\item{pesticide_info}{The reference table which contains all relevant information for
+calculations. It is recommended that the "pesticide_info" data set included in this
+package be used and if you wish to include more or less pesticides you can appended
 them with the relevant information to this table. If you are creating your own table you must
-ensure that the pollutant name column is title "pollutants" and the relative LOR replacement
+ensure that the pesticide name column is title "pesticides" and the relative LOR replacement
 column is "relative_LOR" for the function to run.}
 
 \item{wet_season_split}{The first month of the sampling year in numeric e.g. July = 7.
@@ -42,8 +42,8 @@ treatment values. PRM calculations can now be run on the returned data.
 Treat a whole data set's LOR values
 }
 \examples{
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info)
-head(Kanto_pollutants_LOR_treated)
+Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+pesticide_info = CatchThemAll.PRM::pesticide_info)
+head(Kanto_pesticides_LOR_treated)
 
 }

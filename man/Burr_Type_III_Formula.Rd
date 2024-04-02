@@ -7,24 +7,24 @@
 Burr_Type_III_Formula(concentration, scale, shape_location, shape_location_2)
 }
 \arguments{
-\item{concentration}{The vector of concentration values for a selected pollutant,
+\item{concentration}{The vector of concentration values for a selected pesticide,
 that has a species sensitivity distribution that fits the Burr Type III distribution,
 to run the equation on.}
 
-\item{scale}{The Burr Type III scale/b value for the selected pollutant.
-These can be found in the "pollutant_info" data frame provided in this package.
-If you are including other pollutants you will need to append them with their
-respective distribution variables to the "pollutant_info" data frame.}
+\item{scale}{The Burr Type III scale/b value for the selected pesticide.
+These can be found in the "pesticide_info" data frame provided in this package.
+If you are including other pesticides you will need to append them with their
+respective distribution variables to the "pesticide_info" data frame.}
 
-\item{shape_location}{The Burr Type III c/shape value for the selected pollutant.
-These can be found in the "pollutant_info" data frame provided in this package.
-If you are including other pollutants you will need to append them
-with their respective distribution variables to the "pollutant_info" table.}
+\item{shape_location}{The Burr Type III c/shape value for the selected pesticide.
+These can be found in the "pesticide_info" data frame provided in this package.
+If you are including other pesticides you will need to append them
+with their respective distribution variables to the "pesticide_info" table.}
 
-\item{shape_location_2}{The Burr Type III k/shape value for the selected pollutant.
-These can be found in the "pollutant_info" data frame provided in this package.
-If you are including other pollutants you will need to append them
-with their respective distribution variables to the "pollutant_info" table.}
+\item{shape_location_2}{The Burr Type III k/shape value for the selected pesticide.
+These can be found in the "pesticide_info" data frame provided in this package.
+If you are including other pesticides you will need to append them
+with their respective distribution variables to the "pesticide_info" table.}
 }
 \value{
 a numeric vector
@@ -36,7 +36,7 @@ Burr Type III (Inverse Burr) Equation Formula
 #Chlorpyrifos is used as its species sensitivity distribution plot fits Burr Type III
 Chlorpyrifos <- c(0.000000001, 0.5, 2.7, 11)
 Burr_Type_III_Formula(concentration = Chlorpyrifos,
-scale = pollutant_info$scale[pollutant_info$pollutant == "Chlorpyrifos"],
-shape_location = pollutant_info$shape_location[pollutant_info$pollutant == "Chlorpyrifos"],
-shape_location_2 = pollutant_info$shape_location_2[pollutant_info$pollutant == "Chlorpyrifos"])
+scale = pesticide_info$scale[pesticide_info$pesticide == "Chlorpyrifos"],
+shape_location = pesticide_info$shape_location[pesticide_info$pesticide == "Chlorpyrifos"],
+shape_location_2 = pesticide_info$shape_location_2[pesticide_info$pesticide == "Chlorpyrifos"])
 }

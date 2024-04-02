@@ -1,16 +1,16 @@
 #' Log-Normal CDF Equation Formula
 #'
-#' @param concentration The vector of concentration values for a selected pollutant,
+#' @param concentration The vector of concentration values for a selected pesticide,
 #'  that has a species sensitivity distribution that fits a log normal log normal distribution,
 #'  to run the equation on.
-#' @param shape_location The mu/location value for the log normal equation for the selected pollutant.
-#' These can be found in the "pollutant_info" data frame provided in this package.
-#' If you are including other pollutants you will need to append them with their
-#'  respective distribution variables to the "pollutant_info" table.
-#' @param scale The sigma/scale value for the log normal equation for the selected pollutant.
-#' These can be found in the "pollutant_info" data frame provided in this package.
-#' If you are including other pollutants you will need to append them with their
-#'  respective distribution variables to the "pollutant_info" table.
+#' @param shape_location The mu/location value for the log normal equation for the selected pesticide.
+#' These can be found in the "pesticide_info" data frame provided in this package.
+#' If you are including other pesticides you will need to append them with their
+#'  respective distribution variables to the "pesticide_info" table.
+#' @param scale The sigma/scale value for the log normal equation for the selected pesticide.
+#' These can be found in the "pesticide_info" data frame provided in this package.
+#' If you are including other pesticides you will need to append them with their
+#'  respective distribution variables to the "pesticide_info" table.
 
 #'
 #' @return a numeric vector

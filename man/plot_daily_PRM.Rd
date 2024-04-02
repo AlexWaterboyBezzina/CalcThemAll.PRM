@@ -24,9 +24,9 @@ site sampling year.}
 \item{wet_season_length}{The length of the wet season in days.}
 
 \item{PRM_group}{This specifies the name of the column to plot.
-The daily average calculations gives PRM for each pollutant type and
+The daily average calculations gives PRM for each pesticide type and
 a total in different columns. "Total" is set as
-the default as it is the PRM value for all pollutants.}
+the default as it is the PRM value for all pesticides.}
 
 \item{title}{TRUE or FALSE value to include a title.}
 
@@ -40,9 +40,9 @@ A plotly plot
 Plot Daily Average PRM Values for a Single Site/Sampling Year
 }
 \examples{
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+pesticide_info = CatchThemAll.PRM::pesticide_info)
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM \%>\%
 dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
 plot_daily_PRM(Lavendar_Town_2017_2018_PRM, "2017-10-02", PRM_group = "Total PRM")

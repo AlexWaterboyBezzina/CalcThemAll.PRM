@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_wet_season_average_PRM.R
 \name{calculate_wet_season_average_PRM}
 \alias{calculate_wet_season_average_PRM}
-\title{Calculate Wet Season Average Pollution Risk Metric Values Using Multiple Imputation}
+\title{Calculate Wet Season Average Pesticide Risk Metric Values Using Multiple Imputation}
 \usage{
 calculate_wet_season_average_PRM(
   daily_PRM_data,
@@ -19,7 +19,7 @@ This data set should also include a "Date", "Sampling Year" and "Site Name" colu
 \item{PRM_group}{This specifies the name of the column to run the calculations on.
 The daily average calculations gives PRM for each pollution type and
 total in different columns so this selects which to run. "Total" is set as
-the default as it is the PRM of all pollutants.}
+the default as it is the PRM of all pesticides.}
 
 \item{imputations}{This sets the number of imputations to run.
 The more imputations the greater the reliability,
@@ -37,12 +37,12 @@ No less than 12 is the default (1 for each month) for reliability but more is re
 A data frame
 }
 \description{
-Calculate Wet Season Average Pollution Risk Metric Values Using Multiple Imputation
+Calculate Wet Season Average Pesticide Risk Metric Values Using Multiple Imputation
 }
 \examples{
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-pollutant_info = CatchThemAll.PRM::pollutant_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+pesticide_info = CatchThemAll.PRM::pesticide_info)
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM,
 PRM_group = "PSII Herbicide PRM")
 head(Kanto_wet_season_PSII_PRM)

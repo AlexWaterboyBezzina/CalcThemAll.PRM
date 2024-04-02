@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## The Pollutant Risk Metric (PRM)
+## The Pesticide Risk Metric (PRM)
 
-This package provides code for estimating combined toxicity of measured pollutants using their Species Sensitivity Distributions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pollutants, a value which is referred to in this package as the **Pollutant Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality and Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) (referred to in this package as  the WQI Method) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pollutants to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below.
+This package provides code for estimating combined toxicity of measured pesticides using their Species Sensitivity Distributions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pesticides, a value which is referred to in this package as the **Pesticide Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality and Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) (referred to in this package as  the WQI Method) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pesticides to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below.
 
 ```{r out.width = '80%', echo = FALSE}
 knitr::include_graphics("figures/guidelines_table.png")
@@ -24,26 +24,26 @@ knitr::include_graphics("figures/guidelines_table.png")
 
 # How To Catch Them All
 
-## Adding Your Own Pollutants
+## Adding Your Own Pesticides
 
-One of the key functions of this package is **the ability to add your own pollutants** to the risk metric, provided that SSD information is available. This can be done by editing the `pollutant_info` table which is included in this package and is used as a look-up table for many of the later functions. You can add your pollutants provided you know the SSD distribution type, scale parameters, shape/location parameters, and weight parameter if required. Depending on how/if LOR replacement is needed relative LOR replacement values for each new pollutant will be required, and if the impact of specific pollutant types is of interest a pollutant type parameter should be provided. The `add_your_own_pollutant()` function appends new pollutant information to the `pollutant_info` table as seen below.
+One of the key functions of this package is **the ability to add your own pesticides** to the risk metric, provided that SSD information is available. This can be done by editing the `pesticide_info` table which is included in this package and is used as a look-up table for many of the later functions. You can add your pesticides provided you know the SSD distribution type, scale parameters, shape/location parameters, and weight parameter if required. Depending on how/if LOR replacement is needed relative LOR replacement values for each new pesticide will be required, and if the impact of specific pesticide types is of interest a pesticide type parameter should be provided. The `add_your_own_pesticide()` function appends new pesticide information to the `pesticide_info` table as seen below.
 
-```{r add_your_own_pollutant, echo=TRUE, warning=FALSE}
+```{r add_your_own_pesticide, echo=TRUE, warning=FALSE}
 library(CatchThemAll.PRM)
 library(DT)
-pollutant_info <- CatchThemAll.PRM::pollutant_info #the original 22 pollutants
-datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
+pesticide_info <- CatchThemAll.PRM::pesticide_info #the original 22 pesticides
+datatable(pesticide_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
-pollutant_info <- add_your_own_pollutant(pollutants = "Poison", #adding one new pollutant
-                                         relative_LORs = 0.023, pollutant_types = "Poison",
+pesticide_info <- add_your_own_pesticide(pesticides = "Poison", #adding one new pesticide
+                                         relative_LORs = 0.023, pesticide_types = "Poison",
                                          distribution_types = "Log-Normal", scales = 0.09,
                                          shape_locations = 0.014)
-datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
+datatable(pesticide_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
-pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollutants
+pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesticides
                                            c("Poison", "Acid", "Sludge"),
                                          relative_LORs = c(0.03, 0.01, 0.5), 
-                                         pollutant_types = c("Ghost", "Bug", "Poison"),
+                                         pesticide_types = c("Ghost", "Bug", "Poison"),
                                          distribution_types = c("Log-Normal", "Log-Logistic
                                                                 Log-Logistic", "Burr Type III"),
                                          scales = c(0.3, 0.002, 2),
@@ -51,38 +51,38 @@ pollutant_info <- add_your_own_pollutant(pollutants = #adding multiple new pollu
                                          shape_locations = c(1, 0.07, 3),
                                          shape_location_2s = c(NA, 0.14, 2.3),
                                          weights = c(NA, 0.08, NA))
-datatable(pollutant_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
+datatable(pesticide_info, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T))
 
 ```
 
-It is **not necessary to remove unmeasured pollutants** from the `pollutant_info` table due to the independent action assumption in the methods, however **if they are not removed they will still require an empty column** in the concentration data set and **which pollutants are used in the metric should be clearly documented** for transparency. 
+It is **not necessary to remove unmeasured pesticides** from the `pesticide_info` table due to the independent action assumption in the methods, however **if they are not removed they will still require an empty column** in the concentration data set and **which pesticides are used in the metric should be clearly documented** for transparency. 
 
 ## Treating Limit Of Reporting Values (LORs)
 
-The treatment of non-detect (left-censored) data is a common issue for the statistical analysis of lab concentration measurements for risk assessment or reporting purposes.Environmental monitoring programs such as those analysing pesticides, metals, or other contaminants, usually report non detects as being below the analytical limit of reporting (LOR) of the analysis. Most laboratories report the detection of a chemical at a concentration less than the LOR of as “< LOR”, for example “< 0.02 µg/L” if the limit of reporting is 0.02 µg/L. All that is known about the concentration of such data is that the ‘true’ value must lie somewhere between zero and the LOR. Proper treatment of such data is imperative for risk assessment, with common approaches being to report the data at the LOR (simply by removing the “<” sign) or as a fraction of the LOR (e.g., half or some other fraction). This package provides two ways to treat LORs using the `treat_LORs_all_data()` function. The first is the method created by the Department of Environment and Science Queensland Water Quality Investigations outlined in the methods document above and is referred to as the **"WQI"** method. This method looks for the first above LOR (detect) concentration recorded for each sampling year or other recurring time interval and replaces every <LOR value before this with a negligible value of 10^-11. Following the first detect, it is assumed there is a very small amount of the contaminant in the waterway, so the <LOR values are replaced with the absolute LOR (less than sign removed) value multiplied by the relative toxicity value defined in the `pollutant_info` table. This standardizes the LOR replacement method so that all contaminants are treated equally according to toxicity, and avoids the introduction of an artificial toxicity signature. The second method is the replacing all LOR values with zero and is referred to as the **"zero"** method. The `treat_LORs_all_data()` function requires a concentration data set with **a column that matches each pollutant name in the** `pollutant_info` **table and a "Site Name" and "Date" column**, and how to use it can be seen below with the example `Kanto_pollutants` concentration data provided in the package.
+The treatment of non-detect (left-censored) data is a common issue for the statistical analysis of lab concentration measurements for risk assessment or reporting purposes.Environmental monitoring programs such as those analysing pesticides, metals, or other contaminants, usually report non detects as being below the analytical limit of reporting (LOR) of the analysis. Most laboratories report the detection of a chemical at a concentration less than the LOR of as “< LOR”, for example “< 0.02 µg/L” if the limit of reporting is 0.02 µg/L. All that is known about the concentration of such data is that the ‘true’ value must lie somewhere between zero and the LOR. Proper treatment of such data is imperative for risk assessment, with common approaches being to report the data at the LOR (simply by removing the “<” sign) or as a fraction of the LOR (e.g., half or some other fraction). This package provides two ways to treat LORs using the `treat_LORs_all_data()` function. The first is the method created by the Department of Environment and Science Queensland Water Quality Investigations outlined in the methods document above and is referred to as the **"WQI"** method. This method looks for the first above LOR (detect) concentration recorded for each sampling year or other recurring time interval and replaces every <LOR value before this with a negligible value of 10^-11. Following the first detect, it is assumed there is a very small amount of the contaminant in the waterway, so the <LOR values are replaced with the absolute LOR (less than sign removed) value multiplied by the relative toxicity value defined in the `pesticide_info` table. This standardizes the LOR replacement method so that all contaminants are treated equally according to toxicity, and avoids the introduction of an artificial toxicity signature. The second method is the replacing all LOR values with zero and is referred to as the **"zero"** method. The `treat_LORs_all_data()` function requires a concentration data set with **a column that matches each pesticide name in the** `pesticide_info` **table and a "Site Name" and "Date" column**, and how to use it can be seen below with the example `Kanto_pesticides` concentration data provided in the package.
 
 ```{r treat_LORs_all_data, echo=TRUE, warning=FALSE}
 
-datatable(Kanto_pollutants, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pollutant concentrations before LOR treatment
+datatable(Kanto_pesticides, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pesticide concentrations before LOR treatment
 
-Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants, #this is the pollutant concentration dataset to be treated
-pollutant_info = CatchThemAll.PRM::pollutant_info, #this specifies the pollutant info look-up table
+Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides, #this is the pesticide concentration dataset to be treated
+pesticide_info = CatchThemAll.PRM::pesticide_info, #this specifies the pesticide info look-up table
 treatment_method = "WQI") #this selects the LOR treatment method
 
-datatable(Kanto_pollutants_LOR_treated, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pollutant concentrations after treatment, LORs should be replaced with either 0.0000001 or LOR replacement value
+datatable(Kanto_pesticides_LOR_treated, options = list(pageLength = 10,lengthMenu = c(5, 10, 15, 20), scrollX = T)) #Kanto pesticide concentrations after treatment, LORs should be replaced with either 0.0000001 or LOR replacement value
 
 ```
 
 
 ## Calculate Daily Average PRM
 
-Once your `pollutant_info` table has all your required pollutants and LOR values have been treated **we can begin the calculating daily average PRM values**, the main focus of this package! The `calculate_daily_average_PRM()` function calculates a daily average PRM value for each day that pollutant concentration data is provided in a "Total PRM" column. It also calculates daily average PRM values for each pollutant_type in the `pollutant_info` table in a column named after the type followed by " PRM", for example "PSII Herbicide PRM". This function is designed to run with a data frame exported from the `treat_LORs_all_data()` function. However if you skipped the treat LORs step the input data frame needs all the same columns and an additional column for "Sampling Year". An example of the function is shown below.
+Once your `pesticide_info` table has all your required pesticides and LOR values have been treated **we can begin the calculating daily average PRM values**, the main focus of this package! The `calculate_daily_average_PRM()` function calculates a daily average PRM value for each day that pesticide concentration data is provided in a "Total PRM" column. It also calculates daily average PRM values for each pesticide_type in the `pesticide_info` table in a column named after the type followed by " PRM", for example "PSII Herbicide PRM". This function is designed to run with a data frame exported from the `treat_LORs_all_data()` function. However if you skipped the treat LORs step the input data frame needs all the same columns and an additional column for "Sampling Year". An example of the function is shown below.
 
 ```{r calculate_daily_average_PRM, echo=TRUE, warning=FALSE}
-head(Kanto_pollutants_LOR_treated) #Kanto pollutant concentrations after LOR treatment
+head(Kanto_pesticides_LOR_treated) #Kanto pesticide concentrations after LOR treatment
 
 #calculate daily PRM
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 head(Kanto_daily_PRM)
 
 ```
@@ -116,14 +116,14 @@ PRM_DT(PRM_data = Kanto_daily_PRM, fill_cols = "Total PRM",
 
 ## Calculate Wet Season Average PRM
 
-The final part of this package is for those interested in **estimating a PRM value for a reoccurring large window of time like a wet season** or a period of high pollution risk. It involves using the calculated daily average PRM values within a wet season window or high risk window to generate a single mean value using **multiple imputation** to fill in non sampling days. More detail about this can be found in the WQI methods document. For example if looking at wet seasons, if 4 sampling years worth of concentration data is provided there will be a single wet season PRM for each year. This is done using the `calculate_wet_season_average_PRM()` function and at this time is only capable of calculating one pollutant_type at a time or "Total PRM" being all pollutant groups together. It is important to note that the multiple imputation method, like any statistical method, has its own underlying assumptions and limitations, the primary one being that the observed data are representative and that there are no unmeasured relationships that are causing the data to be missing. An example of this would be if a monitoring program only samples during wet weather events when runoff and pesticide risk is high. In this example, the multiple imputation method will replicate this data to fill in missing sampled days, and thereby the final average will be reflective of wet weather events and not the entire (low flow and high flow) risk profile. The multiple imputation approach can still be used, but consideration should be given to communication of the final average and what it means. 
+The final part of this package is for those interested in **estimating a PRM value for a reoccurring large window of time like a wet season** or a period of high pollution risk. It involves using the calculated daily average PRM values within a wet season window or high risk window to generate a single mean value using **multiple imputation** to fill in non sampling days. More detail about this can be found in the WQI methods document. For example if looking at wet seasons, if 4 sampling years worth of concentration data is provided there will be a single wet season PRM for each year. This is done using the `calculate_wet_season_average_PRM()` function and at this time is only capable of calculating one pesticide_type at a time or "Total PRM" being all pesticide groups together. It is important to note that the multiple imputation method, like any statistical method, has its own underlying assumptions and limitations, the primary one being that the observed data are representative and that there are no unmeasured relationships that are causing the data to be missing. An example of this would be if a monitoring program only samples during wet weather events when runoff and pesticide risk is high. In this example, the multiple imputation method will replicate this data to fill in missing sampled days, and thereby the final average will be reflective of wet weather events and not the entire (low flow and high flow) risk profile. The multiple imputation approach can still be used, but consideration should be given to communication of the final average and what it means. 
 
 ```{r calculate_wet_season_PRM, echo=TRUE, warning=FALSE}
-Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pollutant groups
+Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
 
 head(Kanto_wet_season_Total_PRM)
 
-Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "PSII Herbicide PRM") #this calculates the wet season average PRM for only PSII pollutants
+Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "PSII Herbicide PRM") #this calculates the wet season average PRM for only PSII pesticides
 
 head(Kanto_wet_season_PSII_PRM)
 

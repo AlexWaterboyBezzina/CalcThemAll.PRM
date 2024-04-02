@@ -1,15 +1,15 @@
 #' Treat a whole data set's LOR values
 #'
-#' @param raw_data A data set of raw pollutant concentration values in individual columns
-#' that match the pollutant names in the "pollutant_info" data frame.
+#' @param raw_data A data set of raw pesticide concentration values in individual columns
+#' that match the pesticide names in the "pesticide_info" data frame.
 #' This data set should also include a "Date" column and "Site Name" column.
-#' A reference data set can be seen in the "Kanto_pollutants" data frame provided in this package,
+#' A reference data set can be seen in the "Kanto_pesticides" data frame provided in this package,
 #' your data should mirror these column headings.
-#' @param pollutant_info The reference table which contains all relevant information for
-#' calculations. It is recommended that the "pollutant_info" data set included in this
-#' package be used and if you wish to include more or less pollutants you can appended
+#' @param pesticide_info The reference table which contains all relevant information for
+#' calculations. It is recommended that the "pesticide_info" data set included in this
+#' package be used and if you wish to include more or less pesticides you can appended
 #' them with the relevant information to this table. If you are creating your own table you must
-#' ensure that the pollutant name column is title "pollutants" and the relative LOR replacement
+#' ensure that the pesticide name column is title "pesticides" and the relative LOR replacement
 #' column is "relative_LOR" for the function to run.
 #' @param wet_season_split The first month of the sampling year in numeric e.g. July = 7.
 #' July (7) is used as the default as this is the first month of the Queensland wet season.
@@ -24,11 +24,11 @@
 #' @export
 #'
 #' @examples
-#' Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-#' pollutant_info = CatchThemAll.PRM::pollutant_info)
-#' head(Kanto_pollutants_LOR_treated)
+#' Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+#' pesticide_info = CatchThemAll.PRM::pesticide_info)
+#' head(Kanto_pesticides_LOR_treated)
 #'
-treat_LORs_all_data <- function(raw_data, pollutant_info = CatchThemAll.PRM::pollutant_info,
+treat_LORs_all_data <- function(raw_data, pesticide_info = CatchThemAll.PRM::pesticide_info,
                                 wet_season_split = 7, treatment_method = "WQI") {
   raw_data <- as.data.frame(raw_data)
   raw_data$Date <- as.POSIXlt(raw_data$Date, tryFormats = c("%Y-%m-%d",
@@ -50,7 +50,7 @@ treat_LORs_all_data <- function(raw_data, pollutant_info = CatchThemAll.PRM::pol
   for(k in 1:length(list_site_year_dataframes)){
 
     updated_LOR_list[[k]] <- treat_LORs(list_site_year_dataframes[[k]],
-                                        pollutant_info, treatment_method)
+                                        pesticide_info, treatment_method)
 
     updated_LOR_list
 
@@ -61,7 +61,7 @@ treat_LORs_all_data <- function(raw_data, pollutant_info = CatchThemAll.PRM::pol
   Treated_LORs <- do.call(rbind, updated_LOR_list)
 
   Treated_LORs <- Treated_LORs %>% dplyr::select("Site Name", "Sampling Year", "Date",
-                                                 pollutant_info$pollutant)
+                                                 pesticide_info$pesticide)
   #return data frame
   return(dplyr::as_tibble(Treated_LORs))
 

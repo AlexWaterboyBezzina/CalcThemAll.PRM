@@ -6,20 +6,20 @@
 \usage{
 treat_LORs(
   sample_data,
-  pollutant_info = CatchThemAll.PRM::pollutant_info,
+  pesticide_info = CatchThemAll.PRM::pesticide_info,
   treatment_method = "Zero"
 )
 }
 \arguments{
 \item{sample_data}{A single observation containing a concentration value for each
-pollutant being used in the metric. LOR values should be in "<0.05" format and
+pesticide being used in the metric. LOR values should be in "<0.05" format and
 no values should be empty "".}
 
-\item{pollutant_info}{The reference table which contains all relevant information
-for calculations. It is recommended that the "pollutant_info" dataset included in
-this package be used and if you wish to include more or less pollutants you can
+\item{pesticide_info}{The reference table which contains all relevant information
+for calculations. It is recommended that the "pesticide_info" dataset included in
+this package be used and if you wish to include more or less pesticides you can
 appended them with the relevant information to this table. If you are creating
-your own table you must ensure that the pollutant name column is title "pollutants"
+your own table you must ensure that the pesticide name column is title "pesticides"
 and the relative LOR replacement column is "relative_LOR" for the function to run.}
 
 \item{treatment_method}{Select how to treat the LOR values with either "WQI"
@@ -36,8 +36,8 @@ returns the provided data set with the first row's LOR values treated.
 Treat a single observations LORs
 }
 \examples{
-first_sample <- Kanto_pollutants[1,] #this selects only the first row (sample)
+first_sample <- Kanto_pesticides[1,] #this selects only the first row (sample)
 LOR_treated_first_sample <- treat_LORs(sample_data = first_sample,
-pollutant_info = CatchThemAll.PRM::pollutant_info, treatment_method = "Zero")
+pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "Zero")
 print(LOR_treated_first_sample)
 }

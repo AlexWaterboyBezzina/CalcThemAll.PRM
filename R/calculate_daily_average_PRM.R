@@ -1,38 +1,38 @@
-#' Calculate Daily Average Pollutant Risk Metric Values For Each Pollutant Type
+#' Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type
 #'
-#' @param LOR_treated_data A data set of LOR treated pollutant concentration values in
-#' individual columns that match the pollutant names in the "pollutant_info" data frame.
+#' @param LOR_treated_data A data set of LOR treated pesticide concentration values in
+#' individual columns that match the pesticide names in the "pesticide_info" data frame.
 #' This data set should also include a "Date", "Sampling Year" and "Site Name" column.
 #' @param include_PAF If "TRUE" Percentage Affected Fraction values are included in
 #' the output along with Daily PRM in a list format. These values can be useful for
-#' plotting relative individual pollutant contribution to overall PRM,
+#' plotting relative individual pesticide contribution to overall PRM,
 #' however most will not need this so default is "FALSE".
-#' @param pollutant_info The reference table which contains all relevant information for
-#' calculations. It is recommended that the "pollutant_info" data set included in this
-#' package be used and if you wish to include more pollutants you can appended
+#' @param pesticide_info The reference table which contains all relevant information for
+#' calculations. It is recommended that the "pesticide_info" data set included in this
+#' package be used and if you wish to include more pesticides you can appended
 #' them with the relevant information to this table. If you are creating your own table you must
-#' ensure that the pollutant name column is title "pollutant" and the relative LOR replacement
+#' ensure that the pesticide name column is title "pesticide" and the relative LOR replacement
 #' column is "relative_LOR" for the function to run.
 #'
 #' @return If include_PAF is "FALSE" returns a data frame of daily average PRM values
-#' for each pollutant type for each sample. Wet season average calculations can be run
+#' for each pesticide type for each sample. Wet season average calculations can be run
 #' on the returned data. If include_PAF is "TRUE" returns a list with daily PRM values
 #' in a data frame as the first object and a data frame of PAF values as the second object.
 #' @export
 #'
 #' @examples
-#' Kanto_pollutants_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pollutants,
-#' pollutant_info = CatchThemAll.PRM::pollutant_info)
-#' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pollutants_LOR_treated)
+#' Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+#' pesticide_info = CatchThemAll.PRM::pesticide_info)
+#' Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
 #' head(Kanto_daily_PRM)
 #'
 #' @importFrom dplyr .data
-calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pollutant_info = CatchThemAll.PRM::pollutant_info){
+calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CatchThemAll.PRM::pesticide_info){
 
 
   LOR_treated_data<- as.data.frame(LOR_treated_data)
 
-  pollutant_names <- pollutant_info$pollutant
+  pesticide_names <- pesticide_info$pesticide
 
   `Site Name` <- LOR_treated_data$`Site Name`
 
@@ -44,9 +44,9 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
   daily_prop <- data.frame(`Site Name`, `Sampling Year`, Date)
 
   daily_all_chems <- data.frame(`Site Name`, `Sampling Year`, Date)
-  for (i in 1:length(pollutant_names)){
-    analyte_i <- pollutant_names[i]
-    parameters <- pollutant_info %>% dplyr::filter(.data$pollutant == analyte_i)
+  for (i in 1:length(pesticide_names)){
+    analyte_i <- pesticide_names[i]
+    parameters <- pesticide_info %>% dplyr::filter(.data$pesticide == analyte_i)
 
     if(parameters$distribution_type == "Burr Type III"){
 
@@ -118,15 +118,15 @@ calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, p
   daily_PRM <- daily_prop %>% dplyr::group_by(.data$Site.Name, .data$Sampling.Year, Date) %>%
     dplyr::summarise("Total PRM" = mean(.data$`Total PRM`))
 
-  for(j in 1:length(unique(pollutant_info$pollutant_type))){
+  for(j in 1:length(unique(pesticide_info$pesticide_type))){
 
-    type <- unique(pollutant_info$pollutant_type)[j]
+    type <- unique(pesticide_info$pesticide_type)[j]
 
-    pollutants <- pollutant_info %>%
-      dplyr::filter(.data$pollutant_type == type)
-    pollutants <- pollutants$pollutant
+    pesticides <- pesticide_info %>%
+      dplyr::filter(.data$pesticide_type == type)
+    pesticides <- pesticides$pesticide
 
-    group_PRM <- PRM %>% dplyr::select(dplyr::starts_with(pollutants))
+    group_PRM <- PRM %>% dplyr::select(dplyr::starts_with(pesticides))
 
     group_PRM <- (1-(apply(group_PRM, 1, FUN=prod, na.rm=TRUE)))*100
 
