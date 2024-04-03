@@ -40,11 +40,11 @@ A plotly plot
 Plot Daily Average PRM Values for a Single Site/Sampling Year
 }
 \examples{
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
-Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM \%>\%
-dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
-plot_daily_PRM(Lavendar_Town_2017_2018_PRM, "2017-10-02", PRM_group = "Total PRM")
+Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
+Lavendar_Town_2017_2018_PRM <- Kant0_daily_PRM \%>\%
+dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")
+plot_daily_PRM(Violet_Town_2017_2018_PRM, "2017-10-02", PRM_group = "Total PRM")
 
 }

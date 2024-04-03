@@ -40,11 +40,11 @@ A data frame
 Calculate Wet Season Average Pesticide Risk Metric Values Using Multiple Imputation
 }
 \examples{
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
-Kanto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM,
+Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
+Kant0_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kant0_daily_PRM,
 PRM_group = "PSII Herbicide PRM")
-head(Kanto_wet_season_PSII_PRM)
+head(Kant0_wet_season_PSII_PRM)
 
 }

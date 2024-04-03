@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @examples
-#' first_sample <- Kanto_pesticides[1,] #this selects only the first row (sample)
+#' first_sample <- Kant0_pesticides[1,] #this selects only the first row (sample)
 #' LOR_treated_first_sample <- treat_LORs(sample_data = first_sample,
 #' pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "Zero")
 #' print(LOR_treated_first_sample)

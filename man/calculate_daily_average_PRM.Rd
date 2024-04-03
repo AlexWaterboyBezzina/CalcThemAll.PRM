@@ -37,9 +37,9 @@ in a data frame as the first object and a data frame of PAF values as the second
 Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type
 }
 \examples{
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info)
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
-head(Kanto_daily_PRM)
+Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
+head(Kant0_daily_PRM)
 
 }

@@ -3,7 +3,7 @@
 #' @param raw_data A data set of raw pesticide concentration values in individual columns
 #' that match the pesticide names in the "pesticide_info" data frame.
 #' This data set should also include a "Date" column and "Site Name" column.
-#' A reference data set can be seen in the "Kanto_pesticides" data frame provided in this package,
+#' A reference data set can be seen in the "Kant0_pesticides" data frame provided in this package,
 #' your data should mirror these column headings.
 #' @param pesticide_info The reference table which contains all relevant information for
 #' calculations. It is recommended that the "pesticide_info" data set included in this
@@ -24,9 +24,9 @@
 #' @export
 #'
 #' @examples
-#' Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+#' Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
 #' pesticide_info = CatchThemAll.PRM::pesticide_info)
-#' head(Kanto_pesticides_LOR_treated)
+#' head(Kant0_pesticides_LOR_treated)
 #'
 treat_LORs_all_data <- function(raw_data, pesticide_info = CatchThemAll.PRM::pesticide_info,
                                 wet_season_split = 7, treatment_method = "WQI") {
