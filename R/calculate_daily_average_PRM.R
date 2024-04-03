@@ -21,10 +21,10 @@
 #' @export
 #'
 #' @examples
-#' Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
+#' Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 #' pesticide_info = CatchThemAll.PRM::pesticide_info)
-#' Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
-#' head(Kant0_daily_PRM)
+#' Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
+#' head(Canto_daily_PRM)
 #'
 #' @importFrom dplyr .data
 calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CatchThemAll.PRM::pesticide_info){

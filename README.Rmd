@@ -18,13 +18,22 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package provides code for estimating combined toxicity of measured pesticides using their Species Sensitivity Distributions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pesticides, a value which is referred to in this package as the **Pesticide Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pesticides to be measured. These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below.
+This package provides code for estimating combined toxicity of measured pesticides using their Species Sensitivity Distributions (SSDs) in a multi-substance potentially affected fraction approach. The resulting value is a estimate of the percentage of species impacted by the measured pesticides, a value which is referred to in this package as the **Pesticide Risk Metric (PRM)**. This is based on the the Queensland Department of Environment and Science Water Quality & Investigation's [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f) used in the Reef 2050 Water Quality Improvement Plan, with the main difference being the ability to add different pesticides to be measured provided they have one of the following SSD distributions:
+
+* Burr_Type_III
+* Gamma
+* Inverse Weibull
+* Log Gumbel
+* Log Logistic
+* Log Logistic Log Logistic
+* Log Normal
+* Log Normal Log Normal
+
+These PRM values can be compared to the three categories of ecosystem condition, as defined in the Australian and New Zealand Guidelines for Fresh & Marine Water Quality seen in the table below.
 
 ```{r out.width = '80%', echo = FALSE}
 knitr::include_graphics("man/figures/guidelines_table.png")
 ```
-
-The Pesticide Risk metric is an adaptable version of the pesticide risk metric that allows for the addition of new pesticides provided SSD information is available and will hopefully be more widely useful.
 
 ## Installation
 
@@ -49,7 +58,7 @@ The process for calculating PRM estimates using this method is split into **4 ma
 3. Calculating daily average PRM estimates `calculate_daily_average_PRM()`
 4. Calculating wet season average PRM estimates `calculate_wet_season_average_PRM()`
 
-An example of how to run this package is provided below using the included `Kant0_pesticides` concentration data.
+An example of how to run this package is provided below using the included `Canto_pesticides` concentration data.
 
 ```{r example_1, echo=TRUE, warning=FALSE}
 library(CatchThemAll.PRM)
@@ -67,17 +76,17 @@ pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesti
                                          weights = c(NA, 0.08, NA))
 
 #2.Treat LOR Values
-Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
+Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "WQI")
 
 #3.Calculate Daily Average PRM
-Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
-head(Kant0_daily_PRM)
+Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
+head(Canto_daily_PRM)
 
-Lavendar_Town_2017_2018_PRM <- Kant0_daily_PRM %>%
- dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
+Violet_Town_2017_2018_PRM <- Canto_daily_PRM %>%
+ dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")
 
-plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
+plot <- plot_daily_PRM(daily_PRM_data = Violet_Town_2017_2018_PRM,
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
                wet_season_length = 182, #length of wet season or high risk window
@@ -90,9 +99,9 @@ knitr::include_graphics("man/figures/daily_plot.png")
 
 ```{r example_2, echo=TRUE, warning=FALSE}
 #4.Calculate Wet Season Average PRM
-Kant0_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kant0_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
+Canto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
                          #to calculate for a specific group define it in "PRM_group ="
-head(Kant0_wet_season_Total_PRM)
+head(Canto_wet_season_Total_PRM)
 
 ```
 

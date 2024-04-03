@@ -20,12 +20,12 @@
 #' @export
 #'
 #' @examples
-#' Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
+#' Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 #' pesticide_info = CatchThemAll.PRM::pesticide_info)
-#' Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
-#' Kant0_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kant0_daily_PRM,
+#' Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
+#' Canto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM,
 #' PRM_group = "PSII Herbicide PRM")
-#' head(Kant0_wet_season_PSII_PRM)
+#' head(Canto_wet_season_PSII_PRM)
 #'
 #' @importFrom dplyr .data
 calculate_wet_season_average_PRM <- function(daily_PRM_data, PRM_group = "Total PRM",

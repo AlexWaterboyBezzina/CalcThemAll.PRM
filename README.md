@@ -15,16 +15,23 @@ measured pesticides, a value which is referred to in this package as the
 Department of Environment and Science Water Quality & Investigation’s
 [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f)
 used in the Reef 2050 Water Quality Improvement Plan, with the main
-difference being the ability to add different pesticides to be measured.
+difference being the ability to add different pesticides to be measured
+provided they have one of the following SSD distributions:
+
+- Burr_Type_III
+- Gamma
+- Inverse Weibull
+- Log Gumbel
+- Log Logistic
+- Log Logistic Log Logistic
+- Log Normal
+- Log Normal Log Normal
+
 These PRM values can be compared to the three categories of ecosystem
 condition, as defined in the Australian and New Zealand Guidelines for
 Fresh & Marine Water Quality seen in the table below.
 
 <img src="man/figures/guidelines_table.png" width="80%" />
-
-The Pesticide Risk metric is an adaptable version of the pesticide risk
-metric that allows for the addition of new pesticides provided SSD
-information is available and will hopefully be more widely useful.
 
 ## Installation
 
@@ -57,7 +64,7 @@ into **4 main parts/functions:**
     `calculate_wet_season_average_PRM()`
 
 An example of how to run this package is provided below using the
-included `Kanto_pesticides` concentration data.
+included `Kant0_pesticides` concentration data.
 
 ``` r
 library(CatchThemAll.PRM)
@@ -75,12 +82,12 @@ pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesti
                                          weights = c(NA, 0.08, NA))
 
 #2.Treat LOR Values
-Kanto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kanto_pesticides,
+Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "WQI")
 
 #3.Calculate Daily Average PRM
-Kanto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kanto_pesticides_LOR_treated)
-head(Kanto_daily_PRM)
+Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
+head(Kant0_daily_PRM)
 #> # A tibble: 6 × 7
 #>   `Site Name`    `Sampling Year` Date       `Total PRM` `Insecticide PRM`
 #>   <chr>          <chr>           <chr>            <dbl>             <dbl>
@@ -92,10 +99,10 @@ head(Kanto_daily_PRM)
 #> 6 Celestial City 2017-2018       2017-08-08        5.28     0.00000000193
 #> # ℹ 2 more variables: `Other Herbicide PRM` <dbl>, `PSII Herbicide PRM` <dbl>
 
-Lavendar_Town_2017_2018_PRM <- Kanto_daily_PRM %>%
- dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Lavendar Town")
+Violet_Town_2017_2018_PRM <- Kant0_daily_PRM %>%
+ dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")
 
-plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
+plot <- plot_daily_PRM(daily_PRM_data = Violet_Town_2017_2018_PRM,
                wet_season_start = "2017-10-02", #start date of the wet season or high risk window
                                                 #this is optional and can be removed with = NULL
                wet_season_length = 182, #length of wet season or high risk window
@@ -106,18 +113,18 @@ plot <- plot_daily_PRM(daily_PRM_data = Lavendar_Town_2017_2018_PRM,
 
 ``` r
 #4.Calculate Wet Season Average PRM
-Kanto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kanto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
+Kant0_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kant0_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
                          #to calculate for a specific group define it in "PRM_group ="
-head(Kanto_wet_season_Total_PRM)
+head(Kant0_wet_season_Total_PRM)
 #> # A tibble: 6 × 3
 #>   `Site Name`    `Sampling Year` `Total PRM`
 #>   <chr>          <chr>                 <dbl>
-#> 1 Celestial City 2017-2018             21.0 
-#> 2 Mt Lunar       2017-2018              5.97
-#> 3 Voilet Town    2017-2018             37.4 
+#> 1 Celestial City 2017-2018             21.1 
+#> 2 Mt Lunar       2017-2018              5.99
+#> 3 Violet Town    2017-2018             37.5 
 #> 4 Celestial City 2018-2019             16.9 
 #> 5 Mt Lunar       2018-2019              3.94
-#> 6 Voilet Town    2018-2019             31.2
+#> 6 Violet Town    2018-2019             31.1
 ```
 
 ## Disclaimer

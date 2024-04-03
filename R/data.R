@@ -18,11 +18,11 @@
 "pesticide_info"
 
 
-#' Kant0 Region Pesticide Concentration Values (Example Data Set)
+#' Canto Region Pesticide Concentration Values (Example Data Set)
 #'
-#' A subset of pesticide concentration data for all pesticides in "pesticide_info" from the Kant0 region
+#' A subset of pesticide concentration data for all pesticides in "pesticide_info" from the Canto region
 #'
-#' @format ## `Kant0_pesticides`
+#' @format ## `Canto_pesticides`
 #' A data frame with 808 rows and 64 columns:
 #' \describe{
 #'   \item{Site Name}{Site name}
@@ -33,5 +33,5 @@
 #'   Diazinon, Imidicloprid1:40}{pesticide concentration values in ug/L}
 #'   ...
 #' }
-#' @source <https://bulbapedia.bulbagarden.net/wiki/Kant0>
-"Kant0_pesticides"
+#' @source <https://bulbapedia.bulbagarden.net/wiki/Canto>
+"Canto_pesticides"

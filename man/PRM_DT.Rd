@@ -22,10 +22,10 @@ a data table colour coded to PRM risk
 PRM Data Table Function
 }
 \examples{
-Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
+Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info)
-Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
-PRM_DT(PRM_data = Kant0_daily_PRM, fill_cols = "Total PRM",
+Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
+PRM_DT(PRM_data = Canto_daily_PRM, fill_cols = "Total PRM",
 colour_cols = c("PSII Herbicide PRM", "Other Herbicide PRM", "Insecticide PRM"))
 
 }
