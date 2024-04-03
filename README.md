@@ -122,9 +122,9 @@ head(Canto_wet_season_Total_PRM)
 #> 1 Celestial City 2017-2018             21.1 
 #> 2 Mt Lunar       2017-2018              5.97
 #> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.8 
-#> 5 Mt Lunar       2018-2019              3.93
-#> 6 Violet Town    2018-2019             31.1
+#> 4 Celestial City 2018-2019             16.9 
+#> 5 Mt Lunar       2018-2019              3.95
+#> 6 Violet Town    2018-2019             31.2
 ```
 
 ## Disclaimer
