@@ -64,7 +64,7 @@ into **4 main parts/functions:**
     `calculate_wet_season_average_PRM()`
 
 An example of how to run this package is provided below using the
-included `Kant0_pesticides` concentration data.
+included `Canto_pesticides` concentration data.
 
 ``` r
 library(CatchThemAll.PRM)
@@ -82,12 +82,12 @@ pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesti
                                          weights = c(NA, 0.08, NA))
 
 #2.Treat LOR Values
-Kant0_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Kant0_pesticides,
+Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "WQI")
 
 #3.Calculate Daily Average PRM
-Kant0_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Kant0_pesticides_LOR_treated)
-head(Kant0_daily_PRM)
+Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
+head(Canto_daily_PRM)
 #> # A tibble: 6 × 7
 #>   `Site Name`    `Sampling Year` Date       `Total PRM` `Insecticide PRM`
 #>   <chr>          <chr>           <chr>            <dbl>             <dbl>
@@ -99,7 +99,7 @@ head(Kant0_daily_PRM)
 #> 6 Celestial City 2017-2018       2017-08-08        5.28     0.00000000193
 #> # ℹ 2 more variables: `Other Herbicide PRM` <dbl>, `PSII Herbicide PRM` <dbl>
 
-Violet_Town_2017_2018_PRM <- Kant0_daily_PRM %>%
+Violet_Town_2017_2018_PRM <- Canto_daily_PRM %>%
  dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")
 
 plot <- plot_daily_PRM(daily_PRM_data = Violet_Town_2017_2018_PRM,
@@ -113,17 +113,17 @@ plot <- plot_daily_PRM(daily_PRM_data = Violet_Town_2017_2018_PRM,
 
 ``` r
 #4.Calculate Wet Season Average PRM
-Kant0_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Kant0_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
+Canto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
                          #to calculate for a specific group define it in "PRM_group ="
-head(Kant0_wet_season_Total_PRM)
+head(Canto_wet_season_Total_PRM)
 #> # A tibble: 6 × 3
 #>   `Site Name`    `Sampling Year` `Total PRM`
 #>   <chr>          <chr>                 <dbl>
 #> 1 Celestial City 2017-2018             21.1 
-#> 2 Mt Lunar       2017-2018              5.99
+#> 2 Mt Lunar       2017-2018              5.97
 #> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.9 
-#> 5 Mt Lunar       2018-2019              3.94
+#> 4 Celestial City 2018-2019             16.8 
+#> 5 Mt Lunar       2018-2019              3.93
 #> 6 Violet Town    2018-2019             31.1
 ```
 

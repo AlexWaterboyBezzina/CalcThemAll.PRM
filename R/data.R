@@ -33,5 +33,4 @@
 #'   Diazinon, Imidicloprid1:40}{pesticide concentration values in ug/L}
 #'   ...
 #' }
-#' @source <https://bulbapedia.bulbagarden.net/wiki/Canto>
 "Canto_pesticides"
