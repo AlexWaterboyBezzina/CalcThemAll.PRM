@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# CatchThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
+# CalcThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -38,18 +38,18 @@ Fresh & Marine Water Quality seen in the table below.
 The easiest way to install this package is from CRAN
 
 ``` r
-install.packages("CatchThemAll.PRM")
+install.packages("CalcThemAll.PRM")
 ```
 
-You can install the development version of CatchThemAll.PRM from
+You can install the development version of CalcThemAll.PRM from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("AlexWaterboyBezzina/CatchThemAll.PRM")
+devtools::install_github("AlexWaterboyBezzina/CalcThemAll.PRM")
 ```
 
-# How To Catch Them All (Calculate PRM Quick Version)
+# How To Calc Them All (Calculate PRM Quick Version)
 
 The process for calculating PRM estimates using this method is split
 into **4 main parts/functions:**
@@ -67,7 +67,7 @@ An example of how to run this package is provided below using the
 included `Canto_pesticides` concentration data.
 
 ``` r
-library(CatchThemAll.PRM)
+library(CalcThemAll.PRM)
 #1.Add new pesticides to pesticide_info table
 pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesticides
                                            c("Poison", "Acid", "Sludge"),
@@ -83,7 +83,7 @@ pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesti
 
 #2.Treat LOR Values
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "WQI")
+pesticide_info = CalcThemAll.PRM::pesticide_info, treatment_method = "WQI")
 
 #3.Calculate Daily Average PRM
 Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
@@ -122,8 +122,8 @@ head(Canto_wet_season_Total_PRM)
 #> 1 Celestial City 2017-2018             21.1 
 #> 2 Mt Lunar       2017-2018              5.97
 #> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.9 
-#> 5 Mt Lunar       2018-2019              3.95
+#> 4 Celestial City 2018-2019             16.8 
+#> 5 Mt Lunar       2018-2019              3.92
 #> 6 Violet Town    2018-2019             31.2
 ```
 
@@ -145,10 +145,10 @@ on the information and calculated data in any way and for any reason.
 **R Package:**
 
 *Bezzina A, Neelamraju C, Strauss J, Kaminski H, Roberts C, Glen J, Dias
-F. 2022. CatchThemAll.PRM: Pesticide Risk Metric Calculations. R
-package. Water Quality Monitoring & Investigations, Department of
-Environment and Science, Queensland Government.
-<https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM>*
+F. 2022. CalcThemAll.PRM: Pesticide Risk Metric Calculations. R package.
+Water Quality Monitoring & Investigations, Department of Environment and
+Science, Queensland Government.
+<https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM>*
 
 **Methods Behind Pesticide Risk Metric:**
 
