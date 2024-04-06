@@ -23,6 +23,6 @@ Diazinon, Imidicloprid1:40}{pesticide concentration values in ug/L}
 Canto_pesticides
 }
 \description{
-A subset of pesticide concentration data for all pesticides in "pesticide_info" from the Canto region
+A subset of pesticide concentration data for all pesticides in "pesticide_info" created for this package with fabricated sites
 }
 \keyword{datasets}

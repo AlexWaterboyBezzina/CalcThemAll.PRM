@@ -20,7 +20,7 @@
 
 #' Canto Region Pesticide Concentration Values (Example Data Set)
 #'
-#' A subset of pesticide concentration data for all pesticides in "pesticide_info" from the Canto region
+#' A subset of pesticide concentration data for all pesticides in "pesticide_info" created for this package with fabricated sites
 #'
 #' @format ## `Canto_pesticides`
 #' A data frame with 808 rows and 64 columns:

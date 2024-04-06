@@ -21,7 +21,7 @@
 #' pesticide_types = "Poison", distribution_types = "Log-Normal", scales = 0.09,
 #' shape_locations = 0.014)
 #' multiple_new <- add_your_own_pesticide(pesticides = c("Poison", "Acid", "Sludge"),
-#' relative_LORs = c(0.03, 0.01, 0.5), pesticide_types = c("Ghost", "Bug", "Poison"),
+#' relative_LORs = c(0.03, 0.01, 0.5), pesticide_types = c("Poison", "Acid", "Sludge"),
 #' distribution_types = c("Log-Normal", "Log-Logistic Log-Logistic", "Burr Type III"),
 #' scales = c(0.3, 0.002, 2),
 #' scale_2s = c(NA, 0.04, NA),  shape_locations = c(1, 0.07, 3),
@@ -29,7 +29,7 @@
 add_your_own_pesticide <- function(pesticides, relative_LORs, pesticide_types,
                                    distribution_types, shape_locations = NA,
                                    shape_location_2s = NA, scales = NA,
-                                   scale_2s = NA, weights = NA, pesticide_info = CatchThemAll.PRM::pesticide_info){
+                                   scale_2s = NA, weights = NA, pesticide_info = CalcThemAll.PRM::pesticide_info){
 
   new_pesticides <- data.frame(pesticide = c(pesticides), relative_LOR = c(relative_LORs),
                                pesticide_type = c(pesticide_types),

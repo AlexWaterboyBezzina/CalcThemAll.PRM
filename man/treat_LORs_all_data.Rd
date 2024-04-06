@@ -6,7 +6,7 @@
 \usage{
 treat_LORs_all_data(
   raw_data,
-  pesticide_info = CatchThemAll.PRM::pesticide_info,
+  pesticide_info = CalcThemAll.PRM::pesticide_info,
   wet_season_split = 7,
   treatment_method = "WQI"
 )
@@ -43,7 +43,7 @@ Treat a whole data set's LOR values
 }
 \examples{
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-pesticide_info = CatchThemAll.PRM::pesticide_info)
+pesticide_info = CalcThemAll.PRM::pesticide_info)
 head(Canto_pesticides_LOR_treated)
 
 }

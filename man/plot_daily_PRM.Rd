@@ -41,7 +41,7 @@ Plot Daily Average PRM Values for a Single Site/Sampling Year
 }
 \examples{
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-pesticide_info = CatchThemAll.PRM::pesticide_info)
+pesticide_info = CalcThemAll.PRM::pesticide_info)
 Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
 Violet_Town_2017_2018_PRM <- Canto_daily_PRM \%>\%
 dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")

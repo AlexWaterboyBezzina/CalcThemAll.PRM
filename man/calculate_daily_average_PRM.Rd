@@ -7,7 +7,7 @@
 calculate_daily_average_PRM(
   LOR_treated_data,
   include_PAF = FALSE,
-  pesticide_info = CatchThemAll.PRM::pesticide_info
+  pesticide_info = CalcThemAll.PRM::pesticide_info
 )
 }
 \arguments{
@@ -38,7 +38,7 @@ Calculate Daily Average Pesticide Risk Metric Values For Each Pesticide Type
 }
 \examples{
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-pesticide_info = CatchThemAll.PRM::pesticide_info)
+pesticide_info = CalcThemAll.PRM::pesticide_info)
 Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
 head(Canto_daily_PRM)
 

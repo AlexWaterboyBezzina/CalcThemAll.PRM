@@ -1,3 +1,3 @@
-# CatchThemAll.PRM 1.0.0
+# CalcThemAll.PRM 1.0.0
 
 * Initial CRAN submission.

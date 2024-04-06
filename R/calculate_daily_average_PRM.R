@@ -22,12 +22,12 @@
 #'
 #' @examples
 #' Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-#' pesticide_info = CatchThemAll.PRM::pesticide_info)
+#' pesticide_info = CalcThemAll.PRM::pesticide_info)
 #' Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
 #' head(Canto_daily_PRM)
 #'
 #' @importFrom dplyr .data
-calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CatchThemAll.PRM::pesticide_info){
+calculate_daily_average_PRM <- function(LOR_treated_data, include_PAF = FALSE, pesticide_info = CalcThemAll.PRM::pesticide_info){
 
 
   LOR_treated_data<- as.data.frame(LOR_treated_data)

@@ -19,7 +19,7 @@
 #'
 #' @examples
 #' Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-#' pesticide_info = CatchThemAll.PRM::pesticide_info)
+#' pesticide_info = CalcThemAll.PRM::pesticide_info)
 #' Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
 #' Violet_Town_2017_2018_PRM <- Canto_daily_PRM %>%
 #' dplyr::filter(.data$`Sampling Year` ==  "2017-2018" &  .data$`Site Name` == "Violet Town")
@@ -43,7 +43,7 @@ plot_daily_PRM <- function(daily_PRM_data, wet_season_start = NULL, wet_season_l
   daily_PRM_data <- daily_PRM_data %>% dplyr::mutate(Risk = cut(daily_PRM_data$Daily.PRM, levels, labels = labels))
 
 
-  shape <- if(is.null(wet_season_start)){NULL} else {list(CatchThemAll.PRM::plot_wet_season_window(wet_season_start, wet_season_length))}
+  shape <- if(is.null(wet_season_start)){NULL} else {list(CalcThemAll.PRM::plot_wet_season_window(wet_season_start, wet_season_length))}
 
   p <- plotly::plot_ly(
     daily_PRM_data,

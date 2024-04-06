@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# CatchThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
+# CalcThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -40,16 +40,16 @@ knitr::include_graphics("man/figures/guidelines_table.png")
 The easiest way to install this package is from CRAN
 
 ``` r
-install.packages("CatchThemAll.PRM")
+install.packages("CalcThemAll.PRM")
 ```
 
-You can install the development version of CatchThemAll.PRM from [GitHub](https://github.com/) with:
+You can install the development version of CalcThemAll.PRM from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("AlexWaterboyBezzina/CatchThemAll.PRM")
+devtools::install_github("AlexWaterboyBezzina/CalcThemAll.PRM")
 ```
-# How To Catch Them All (Calculate PRM Quick Version)
+# How To Calc Them All (Calculate PRM Quick Version)
 
 The process for calculating PRM estimates using this method is split into **4 main parts/functions:**
 
@@ -61,7 +61,7 @@ The process for calculating PRM estimates using this method is split into **4 ma
 An example of how to run this package is provided below using the included `Canto_pesticides` concentration data.
 
 ```{r example_1, echo=TRUE, warning=FALSE}
-library(CatchThemAll.PRM)
+library(CalcThemAll.PRM)
 #1.Add new pesticides to pesticide_info table
 pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesticides
                                            c("Poison", "Acid", "Sludge"),
@@ -77,7 +77,7 @@ pesticide_info <- add_your_own_pesticide(pesticides = #adding multiple new pesti
 
 #2.Treat LOR Values
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
-pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "WQI")
+pesticide_info = CalcThemAll.PRM::pesticide_info, treatment_method = "WQI")
 
 #3.Calculate Daily Average PRM
 Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
@@ -114,7 +114,7 @@ Information is from several sources and, as such, does not necessarily represent
 
 **R Package:**
 
-*Bezzina A, Neelamraju C, Strauss J, Kaminski H, Roberts C, Glen J, Dias F. 2022. CatchThemAll.PRM: Pesticide Risk Metric Calculations. R package. Water Quality Monitoring & Investigations, Department of Environment and Science, Queensland Government. https://github.com/AlexWaterboyBezzina/CatchThemAll.PRM*
+*Bezzina A, Neelamraju C, Strauss J, Kaminski H, Roberts C, Glen J, Dias F. 2022. CalcThemAll.PRM: Pesticide Risk Metric Calculations. R package. Water Quality Monitoring & Investigations, Department of Environment and Science, Queensland Government. https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM*
 
 **Methods Behind Pesticide Risk Metric:**
 

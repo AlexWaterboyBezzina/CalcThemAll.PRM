@@ -22,10 +22,10 @@
 #' @examples
 #' first_sample <- Canto_pesticides[1,] #this selects only the first row (sample)
 #' LOR_treated_first_sample <- treat_LORs(sample_data = first_sample,
-#' pesticide_info = CatchThemAll.PRM::pesticide_info, treatment_method = "Zero")
+#' pesticide_info = CalcThemAll.PRM::pesticide_info, treatment_method = "Zero")
 #' print(LOR_treated_first_sample)
 treat_LORs <- function(sample_data,
-                            pesticide_info = CatchThemAll.PRM::pesticide_info,
+                            pesticide_info = CalcThemAll.PRM::pesticide_info,
                             treatment_method = "Zero"){ #
   if(treatment_method == "Zero"){
     sample_data <- sample_data %>%
