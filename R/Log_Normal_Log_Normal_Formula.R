@@ -28,14 +28,11 @@
 #' @export
 #'
 #' @examples
-#' #Imidacloprid 38 is used as its species sensitivity distribution plot fits log-normal log-normal
-#' Imid38 <- c(0.000000001, 0.5, 2.7, 11)
-#' Log_Normal_Log_Normal_Formula(concentration = Imid38,
-#' shape_location = pesticide_info$shape_location[pesticide_info$pesticide == "38"],
-#' scale = pesticide_info$scale[pesticide_info$pesticide == "38"],
-#' shape_location_2 = pesticide_info$shape_location_2[pesticide_info$pesticide == "38"],
-#' scale_2 = pesticide_info$scale_2[pesticide_info$pesticide == "38"],
-#' weight = pesticide_info$weight[pesticide_info$pesticide == "38"])
+#' #This Example should produce roughly 1% and 5% PRM values
+#' LogN_LogN_pesticide_concentrations <- c(4.79E-05, 0.000225588)
+#' Log_Normal_Log_Normal_Formula(concentration = LogN_LogN_pesticide_concentrations,
+#' shape_location = -5.596431, scale = 2.061943,
+#' shape_location_2 = 0.01174954, scale_2 = 0.9134796, weight = 0.5733126)
 
 
 # Compute the log-normal log-normal (double curve) CDF for the given x to find PRM

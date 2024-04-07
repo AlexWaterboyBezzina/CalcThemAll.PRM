@@ -28,9 +28,7 @@ a numeric vector
 Gamma CDF Equation Formula
 }
 \examples{
-#Imidacloprid is used as its species sensitivity distribution plot fits log-normal log-normal
-Imidacloprid <- c(0.000000001, 0.5, 2.7, 11)
-Gamma_Formula(concentration = Imidacloprid,
-shape_location = pesticide_info$shape_location[pesticide_info$pesticide == "Imidacloprid"],
-scale = pesticide_info$scale[pesticide_info$pesticide == "Imidacloprid"])
+gamma_pesticide_concentrations <- c(0.000000001, 0.5, 2.7, 11)
+Gamma_Formula(concentration = gamma_pesticide_concentrations,
+shape_location = 0.23, scale = 1.3)
 }

@@ -8,7 +8,7 @@ Log_Normal_Formula(concentration, shape_location, scale)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits a log normal log normal distribution,
+that has a species sensitivity distribution that fits a log normal distribution,
 to run the equation on.}
 
 \item{shape_location}{The mu/location value for the log normal equation for the selected pesticide.
@@ -28,8 +28,7 @@ a numeric vector
 Log-Normal CDF Equation Formula
 }
 \examples{
-random <- c(0.000000001, 0.5, 2.7, 11)
-Log_Normal_Formula(concentration = random,
-shape_location = 0.23,
-scale = 1.3)
+LogN_pesticide_concentrations <- c(0.000000001, 0.5, 2.7, 11)
+Log_Normal_Formula(concentration = LogN_pesticide_concentrations,
+shape_location = 0.23, scale = 1.3)
 }

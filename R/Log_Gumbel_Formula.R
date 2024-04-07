@@ -17,11 +17,10 @@
 #' @export
 #'
 #' @examples
-#' #Imidacloprid is used as its species sensitivity distribution plot fits log-normal log-normal
-#' Imidacloprid <- c(0.000000001, 0.5, 2.7, 11)
-#' Log_Gumbel_Formula(concentration = Imidacloprid,
-#' shape_location = pesticide_info$shape_location[pesticide_info$pesticide == "Imidacloprid"],
-#' scale = pesticide_info$scale[pesticide_info$pesticide == "Imidacloprid"])
+#' #This Example should produce roughly 1% and 5% PRM values
+#' LogGumbel_pesticide_concentrations <- c(0.095957794, 0.245881898)
+#' Log_Gumbel_Formula(concentration = LogGumbel_pesticide_concentrations,
+#' shape_location = 0.9980581, scale = 2.188285)
 
 
 # Compute the Gamma CDF for the given concentration to find PRM
