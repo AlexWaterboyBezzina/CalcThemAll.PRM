@@ -1,6 +1,6 @@
   bibentry(
     bibtype = "Manual",
-    title = "CatchThemAll.PRM",
+    title = "CalcThemAll.PRM",
     author = c(
       person("Alexander", "Bezzina", role = c("aut", "cre"),
              email = "alex.h.bezzina@gmail.com"),
@@ -14,8 +14,8 @@
     ),
     year = "2024",
     note = "R package version 1.01",
-    url = "https://CRAN.R-project.org/package=CatchThemAll.PRM",
-    key = "Catch-package"
+    url = "https://CRAN.R-project.org/package=CalcThemAll.PRM",
+    key = "Calc-package"
   )
 
   bibentry(
@@ -25,5 +25,5 @@
     year = "2020",
     institution = "Department of Environment and Science Queensland",
     url = "https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f",
-    key = "Catch-methods"
+    key = "Calc-methods"
   )
