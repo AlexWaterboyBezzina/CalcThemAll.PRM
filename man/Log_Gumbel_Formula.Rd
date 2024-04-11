@@ -7,19 +7,19 @@
 Log_Gumbel_Formula(concentration, shape_location, scale)
 }
 \arguments{
-\item{concentration}{The vector of concentration values for a selected pollution,
-that has a species sensitivity distribution that fits a log gumbel distribution,
+\item{concentration}{The vector of concentration values for a selected pesticide,
+that has a log gumbel shaped species sensitivity distribution,
 to run the equation on.}
 
-\item{shape_location}{The mu/location value for the log gumbel equation for the selected pollution.
-These can be found in the "pollution_info" data frame provided in this package.
-If you are including other pollutions you will need to append them with their
-respective distribution variables to the "pollution_info" table.}
+\item{shape_location}{The mu/location value for the log gumbel equation for the selected pesticide.
+These can be found in the "pesticide_info" data frame provided in this package.
+If you are including other pesticides you will need to append them with their
+respective distribution variables to the "pesticide_info" table.}
 
-\item{scale}{The beta/scale value for the log gumbel equation for the selected pollution.
-These can be found in the "pollution_info" data frame provided in this package.
-If you are including other pollutions you will need to append them with their
-respective distribution variables to the "pollution_info" table.}
+\item{scale}{The beta/scale value for the log gumbel equation for the selected pesticide.
+These can be found in the "pesticide_info" data frame provided in this package.
+If you are including other pesticides you will need to append them with their
+respective distribution variables to the "pesticide_info" table.}
 }
 \value{
 a numeric vector

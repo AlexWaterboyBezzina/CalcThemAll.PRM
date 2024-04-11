@@ -8,7 +8,7 @@ Log_Logistic_Formula(concentration, scale, shape_location)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits the Log Logistic distribution,
+that has a log logistic shaped species sensitivity distribution,
 to run the equation on.}
 
 \item{scale}{The log logistic alpha/scale value for the selected pesticide.

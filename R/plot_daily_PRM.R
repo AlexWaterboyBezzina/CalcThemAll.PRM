@@ -4,7 +4,7 @@
 #' a single site and sampling year. This data set should also include a "Date",
 #' "Sampling Year" and "Site Name" column.
 #' @param wet_season_start The date of the start of the wet season for this
-#' site sampling year.
+#' site sampling year. If not applicable leave as NA
 #' @param wet_season_length The length of the wet season in days.
 #' @param PRM_group This specifies the name of the column to plot.
 #' The daily average calculations gives PRM for each pesticide type and

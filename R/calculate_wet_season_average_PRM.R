@@ -3,7 +3,7 @@
 #' @param daily_PRM_data A data set of calculated daily average PRM values.
 #' This data set should also include a "Date", "Sampling Year" and "Site Name" column.
 #' @param PRM_group This specifies the name of the column to run the calculations on.
-#' The daily average calculations gives PRM for each pollution type and
+#' The daily average calculations gives PRM for each pesticide type and
 #' total in different columns so this selects which to run. "Total" is set as
 #' the default as it is the PRM of all pesticides.
 #' @param imputations This sets the number of imputations to run.

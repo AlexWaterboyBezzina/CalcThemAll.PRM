@@ -8,7 +8,7 @@ Burr_Type_III_Formula(concentration, scale, shape_location, shape_location_2)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits the Burr Type III distribution,
+that has a Burr Type III shaped species sensitivity distribution,
 to run the equation on.}
 
 \item{scale}{The Burr Type III scale/b value for the selected pesticide.
@@ -33,7 +33,7 @@ a numeric vector
 Burr Type III (Inverse Burr) Equation Formula
 }
 \examples{
-#Chlorpyrifos is used as its species sensitivity distribution plot fits Burr Type III
+#Chlorpyrifos is used as its species sensitivity distribution fits Burr Type III
 Chlorpyrifos <- c(0.000000001, 0.5, 2.7, 11)
 Burr_Type_III_Formula(concentration = Chlorpyrifos,
 scale = pesticide_info$scale[pesticide_info$pesticide == "Chlorpyrifos"],

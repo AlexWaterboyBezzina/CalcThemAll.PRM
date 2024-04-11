@@ -12,9 +12,9 @@ A data frame with 62 rows and 9 columns:
 \item{pesticide}{Pesticide name}
 \item{relative_LOR}{The relative Limit of Reporting replacement value}
 \item{pesticide_type}{The pesticide method of effect}
-\item{distribution_type}{The species sensetivity distribution shape/type}
+\item{distribution_type}{The species sensitivity distribution shape/type}
 \item{shape_location, shape_location2, scale, scale2,
-weight}{Species sensativity distribution variables used in PRM calculations}
+weight}{Species sensitivity distribution variables used in PRM calculations}
 ...
 }
 }

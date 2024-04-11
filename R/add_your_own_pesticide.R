@@ -1,11 +1,11 @@
-#' Add New Pesticides to the PRM Calculation Information Table
+#' Add new pesticides to the pesticide_info table
 #'
 #' @param pesticides A vector of pesticide names
 #' @param relative_LORs A vector of relative limit of reporting
 #' replacement values
 #' @param pesticide_types A vector of the new pesticide's types
 #' @param distribution_types A vector of the new pesticide's species
-#' sensitive distribution types
+#' sensitivity distribution types
 #' @param shape_locations A vector of shape/location values (if applicable, else put NA)
 #' @param shape_location_2s A vector of secondary shape/location values (if applicable, else put NA)
 #' @param scales A vector of scale values (if applicable, else put NA)

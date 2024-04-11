@@ -8,7 +8,7 @@ Inverse_Weibull_Formula(concentration, shape_location, scale)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits the Inverse Weibull distribution,
+that has a Inverse Weibull shaped species sensitivity distribution,
 to run the equation on.}
 
 \item{shape_location}{The Inverse Weibull shape/alpha value for the selected pesticide.

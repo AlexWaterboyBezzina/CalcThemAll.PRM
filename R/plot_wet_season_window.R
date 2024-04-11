@@ -1,4 +1,4 @@
-#' Plot Wet Season Window Box on Daily PRM Plot
+#' Plot Wet Season Window Box on plot_daily_PRM
 #'
 #' @param wet_season_start The date of the start of the wet season for this
 #' site sampling year.

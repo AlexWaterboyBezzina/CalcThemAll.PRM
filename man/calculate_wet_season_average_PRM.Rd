@@ -17,7 +17,7 @@ calculate_wet_season_average_PRM(
 This data set should also include a "Date", "Sampling Year" and "Site Name" column.}
 
 \item{PRM_group}{This specifies the name of the column to run the calculations on.
-The daily average calculations gives PRM for each pollution type and
+The daily average calculations gives PRM for each pesticide type and
 total in different columns so this selects which to run. "Total" is set as
 the default as it is the PRM of all pesticides.}
 

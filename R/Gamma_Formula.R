@@ -1,7 +1,7 @@
 #' Gamma CDF Equation Formula
 #'
 #' @param concentration The vector of concentration values for a selected pesticide,
-#'  that has a species sensitivity distribution that fits a gamma distribution,
+#'  that has a gamma shaped species sensitivity distribution,
 #'  to run the equation on.
 #' @param shape_location The k/shape value for the gamma equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.

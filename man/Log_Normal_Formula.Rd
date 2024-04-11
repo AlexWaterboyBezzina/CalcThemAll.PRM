@@ -8,7 +8,7 @@ Log_Normal_Formula(concentration, shape_location, scale)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits a log normal distribution,
+that has a log normal shaped species sensitivity distribution,
 to run the equation on.}
 
 \item{shape_location}{The mu/location value for the log normal equation for the selected pesticide.

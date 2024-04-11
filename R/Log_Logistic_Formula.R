@@ -1,7 +1,7 @@
 #' Log Logistic Formula
 #'
 #' @param concentration The vector of concentration values for a selected pesticide,
-#' that has a species sensitivity distribution that fits the Log Logistic distribution,
+#' that has a log logistic shaped species sensitivity distribution,
 #' to run the equation on.
 #' @param scale The log logistic alpha/scale value for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.

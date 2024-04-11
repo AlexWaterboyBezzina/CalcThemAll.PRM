@@ -1,7 +1,7 @@
 #' Inverse Weibull Formula
 #'
 #' @param concentration The vector of concentration values for a selected pesticide,
-#' that has a species sensitivity distribution that fits the Inverse Weibull distribution,
+#' that has a Inverse Weibull shaped species sensitivity distribution,
 #' to run the equation on.
 #' @param shape_location The Inverse Weibull shape/alpha value for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.

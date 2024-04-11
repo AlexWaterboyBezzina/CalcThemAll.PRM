@@ -9,9 +9,9 @@
 #'   \item{pesticide}{Pesticide name}
 #'   \item{relative_LOR}{The relative Limit of Reporting replacement value}
 #'   \item{pesticide_type}{The pesticide method of effect}
-#'   \item{distribution_type}{The species sensetivity distribution shape/type}
+#'   \item{distribution_type}{The species sensitivity distribution shape/type}
 #'   \item{shape_location, shape_location2, scale, scale2,
-#'   weight}{Species sensativity distribution variables used in PRM calculations}
+#'   weight}{Species sensitivity distribution variables used in PRM calculations}
 #'   ...
 #' }
 #' @source <https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f>

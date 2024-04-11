@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_wet_season_window.R
 \name{plot_wet_season_window}
 \alias{plot_wet_season_window}
-\title{Plot Wet Season Window Box on Daily PRM Plot}
+\title{Plot Wet Season Window Box on plot_daily_PRM}
 \usage{
 plot_wet_season_window(wet_season_start = 0, wet_season_length = 182)
 }
@@ -16,7 +16,7 @@ site sampling year.}
 A plotly shape
 }
 \description{
-Plot Wet Season Window Box on Daily PRM Plot
+Plot Wet Season Window Box on plot_daily_PRM
 }
 \examples{
 shape <- plot_wet_season_window(wet_season_start = "2017-08-01")

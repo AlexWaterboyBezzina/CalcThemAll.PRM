@@ -8,7 +8,7 @@ Gamma_Formula(concentration, shape_location, scale)
 }
 \arguments{
 \item{concentration}{The vector of concentration values for a selected pesticide,
-that has a species sensitivity distribution that fits a gamma distribution,
+that has a gamma shaped species sensitivity distribution,
 to run the equation on.}
 
 \item{shape_location}{The k/shape value for the gamma equation for the selected pesticide.

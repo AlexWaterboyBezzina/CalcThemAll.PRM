@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_your_own_pesticide.R
 \name{add_your_own_pesticide}
 \alias{add_your_own_pesticide}
-\title{Add New Pesticides to the PRM Calculation Information Table}
+\title{Add new pesticides to the pesticide_info table}
 \usage{
 add_your_own_pesticide(
   pesticides,
@@ -26,7 +26,7 @@ replacement values}
 \item{pesticide_types}{A vector of the new pesticide's types}
 
 \item{distribution_types}{A vector of the new pesticide's species
-sensitive distribution types}
+sensitivity distribution types}
 
 \item{shape_locations}{A vector of shape/location values (if applicable, else put NA)}
 
@@ -44,7 +44,7 @@ sensitive distribution types}
 A data frame
 }
 \description{
-Add New Pesticides to the PRM Calculation Information Table
+Add new pesticides to the pesticide_info table
 }
 \examples{
 new <- add_your_own_pesticide(pesticides = "Poison", relative_LORs = 0.023,
