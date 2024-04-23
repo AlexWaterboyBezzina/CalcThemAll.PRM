@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM/actions/workflows/R-CMD-check.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/CalcThemAll.PRM)](https://CRAN.R-project.org/package=CalcThemAll.PRM)
 <!-- badges: end -->
 
 This package provides code for estimating the combined toxicity of
