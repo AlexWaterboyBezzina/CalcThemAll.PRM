@@ -4,6 +4,8 @@
 # CalcThemAll.PRM <img src="man/figures/hex.png" align="right" height="138" alt="tidyr website" /></a>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AlexWaterboyBezzina/CalcThemAll.PRM/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package provides code for estimating the combined toxicity of
@@ -120,10 +122,10 @@ head(Canto_wet_season_Total_PRM)
 #>   `Site Name`    `Sampling Year` `Total PRM`
 #>   <chr>          <chr>                 <dbl>
 #> 1 Celestial City 2017-2018             21.0 
-#> 2 Mt Lunar       2017-2018              5.98
+#> 2 Mt Lunar       2017-2018              5.96
 #> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.9 
-#> 5 Mt Lunar       2018-2019              3.94
+#> 4 Celestial City 2018-2019             16.8 
+#> 5 Mt Lunar       2018-2019              3.95
 #> 6 Violet Town    2018-2019             31.2
 ```
 
