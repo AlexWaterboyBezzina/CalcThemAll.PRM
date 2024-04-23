@@ -43,8 +43,10 @@ Calculate Wet Season Average Pesticide Risk Metric Values Using Multiple Imputat
 Canto_pesticides_LOR_treated <- treat_LORs_all_data(raw_data = Canto_pesticides,
 pesticide_info = CalcThemAll.PRM::pesticide_info)
 Canto_daily_PRM <- calculate_daily_average_PRM(LOR_treated_data = Canto_pesticides_LOR_treated)
-Canto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM,
-PRM_group = "PSII Herbicide PRM")
-head(Canto_wet_season_PSII_PRM)
+Celestial_City_2019_2020_daily_PRM <- Canto_daily_PRM \%>\%
+dplyr::filter(`Site Name` == "Celestial City" & `Sampling Year` == "2019-2020")
+CC2019_2020_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data =
+Celestial_City_2019_2020_daily_PRM, PRM_group = "PSII Herbicide PRM")
+CC2019_2020_wet_season_PSII_PRM
 
 }

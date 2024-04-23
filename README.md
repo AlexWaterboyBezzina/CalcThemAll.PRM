@@ -115,18 +115,19 @@ plot <- plot_daily_PRM(daily_PRM_data = Violet_Town_2017_2018_PRM,
 
 ``` r
 #4.Calculate Wet Season Average PRM
-Canto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
-                         #to calculate for a specific group define it in "PRM_group ="
-head(Canto_wet_season_Total_PRM)
-#> # A tibble: 6 × 3
+Celestial_City_2019_2020_daily_PRM <- Canto_daily_PRM %>% 
+  dplyr::filter(`Site Name` == "Celestial City" & `Sampling Year` == "2019-2020")
+#This calculation can take a few minutes so one site & sampling year is used in this example
+
+CC2019_2020_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Celestial_City_2019_2020_daily_PRM, PRM_group = "Total PRM") 
+#this calculates the wet season average PRM for all pesticide groups in one total value
+#to calculate for a specific group define it in "PRM_group ="
+
+CC2019_2020_wet_season_Total_PRM
+#> # A tibble: 1 × 3
 #>   `Site Name`    `Sampling Year` `Total PRM`
 #>   <chr>          <chr>                 <dbl>
-#> 1 Celestial City 2017-2018             21.0 
-#> 2 Mt Lunar       2017-2018              5.96
-#> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.8 
-#> 5 Mt Lunar       2018-2019              3.95
-#> 6 Violet Town    2018-2019             31.2
+#> 1 Celestial City 2019-2020              26.7
 ```
 
 ## Disclaimer

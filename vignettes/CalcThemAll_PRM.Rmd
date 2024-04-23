@@ -130,13 +130,15 @@ PRM_DT(PRM_data = Canto_daily_PRM, fill_cols = "Total PRM",
 The final part of this package is for those interested in **estimating a PRM value for a reoccurring large window of time like a wet season** or a period of high pollution risk. It involves using the calculated daily average PRM values within a wet season window or high-risk window to generate a single mean value using **multiple imputation** to fill in non-sampling days. More detail about this can be found in the WQI methods document. For example if looking at wet seasons, if 4 sampling year's worth of concentration data is provided there will be a single wet season PRM for each year. This is done using the `calculate_wet_season_average_PRM()` function and at this time is only capable of calculating one pesticide_type at a time or "Total PRM" being all pesticide groups together. It is important to note that the multiple imputation method, like any statistical method, has its own underlying assumptions and limitations, the primary one being that the observed data are representative and that there are no unmeasured relationships that are causing the data to be missing. An example of this would be if a monitoring program only samples during wet weather events when runoff and pesticide risk is high. In this example, the multiple imputation method will replicate this data to fill in missing sampled days, and thereby the final average will be reflective of wet weather events and not the entire (low flow and high flow) risk profile. The multiple imputation approach can still be used, but consideration should be given to communication of the final average and what it means. 
 
 ```{r calculate_wet_season_PRM, echo=TRUE, warning=FALSE}
-Canto_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM, PRM_group = "Total PRM") #this calculates the wet season average PRM for all pesticide groups
+#This calculation can take a few minutes so one site & sampling year is used in this example
+Celestial_City_2019_2020_daily_PRM <- Canto_daily_PRM %>% 
+  dplyr::filter(`Site Name` == "Celestial City" & `Sampling Year` == "2019-2020")
 
-head(Canto_wet_season_Total_PRM)
+CC2019_2020_wet_season_Total_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Celestial_City_2019_2020_daily_PRM, PRM_group = "Total PRM")
+#this calculates the wet season average PRM for all pesticide groups in one total value
+#to calculate for a specific group define it in "PRM_group ="
 
-Canto_wet_season_PSII_PRM <- calculate_wet_season_average_PRM(daily_PRM_data = Canto_daily_PRM, PRM_group = "PSII Herbicide PRM") #this calculates the wet season average PRM for only PSII pesticides
-
-head(Canto_wet_season_PSII_PRM)
+CC2019_2020_wet_season_Total_PRM
 
 ```
 
