@@ -1,21 +1,21 @@
 #' Log-Normal Log-Normal (double curve) CDF Equation Formula
 #'
 #' @param concentration The vector of concentration values for a selected pesticide,
-#' that has a log normal log normal species sensitivity distribution,
+#' that has a Log Normal Log Normal species sensitivity distribution,
 #' to run the equation on.
-#' @param shape_location The mu/shape value for the first log normal equation for the selected pesticide.
+#' @param shape_location The mu/shape value for the first Log Normal equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param scale The sigma/scale value for the first log normal equation for the selected pesticide.
+#' @param scale The sigma/scale value for the first Log Normal equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param shape_location_2 The mu/shape value for the second log normal equation for the selected pesticide.
+#' @param shape_location_2 The mu/shape value for the second Log Normal equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #'  respective distribution variables to the "pesticide_info" table.
-#' @param scale_2 The sigma/scale value for the second log normal equation for the selected pesticide.
+#' @param scale_2 The sigma/scale value for the second Log Normal equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.

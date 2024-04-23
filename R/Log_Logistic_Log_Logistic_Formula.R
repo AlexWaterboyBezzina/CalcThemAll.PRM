@@ -3,19 +3,19 @@
 #' @param concentration The vector of concentration values for a selected pesticide,
 #' that has a Log Logistic Log Logistic shaped species sensitivity distribution,
 #' to run the equation on.
-#' @param scale The alpha/scale value for the first log logistic equation for the selected pesticide.
+#' @param scale The alpha/scale value for the first Log Logistic equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param shape_location The beta/shape value for the first log logistic equation for the selected pesticide.
+#' @param shape_location The beta/shape value for the first Log Logistic equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param scale_2 The alpha/scale value for the second log logistic equation for the selected pesticide.
+#' @param scale_2 The alpha/scale value for the second Log Logistic equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param shape_location_2 The beta/shape value for the second log logistic equation for the selected pesticide.
+#' @param shape_location_2 The beta/shape value for the second Log Logistic equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.

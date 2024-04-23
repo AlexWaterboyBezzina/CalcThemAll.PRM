@@ -38,7 +38,7 @@ sensitivity distribution types}
 
 \item{weights}{A vector of weight values (if applicable, else put NA)}
 
-\item{pesticide_info}{A dataset to add pesticides too}
+\item{pesticide_info}{A data set to add pesticides too}
 }
 \value{
 A data frame

@@ -1,4 +1,4 @@
-## code to prepare `Canto_pesticides` dataset goes here
+## code to prepare `Canto_pesticides` data set goes here
 library(vroom)
 library(dplyr)
 

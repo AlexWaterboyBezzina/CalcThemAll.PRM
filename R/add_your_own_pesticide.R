@@ -11,7 +11,7 @@
 #' @param scales A vector of scale values (if applicable, else put NA)
 #' @param scale_2s A vector of secondary scale values (if applicable, else put NA)
 #' @param weights A vector of weight values (if applicable, else put NA)
-#' @param pesticide_info A dataset to add pesticides too
+#' @param pesticide_info A data set to add pesticides too
 #'
 #' @return A data frame
 #' @export

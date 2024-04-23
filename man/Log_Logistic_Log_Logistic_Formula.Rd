@@ -18,22 +18,22 @@ Log_Logistic_Log_Logistic_Formula(
 that has a Log Logistic Log Logistic shaped species sensitivity distribution,
 to run the equation on.}
 
-\item{scale}{The alpha/scale value for the first log logistic equation for the selected pesticide.
+\item{scale}{The alpha/scale value for the first Log Logistic equation for the selected pesticide.
 These can be found in the "pesticide_info" data frame provided in this package.
 If you are including other pesticides you will need to append them with their
 respective distribution variables to the "pesticide_info" table.}
 
-\item{shape_location}{The beta/shape value for the first log logistic equation for the selected pesticide.
+\item{shape_location}{The beta/shape value for the first Log Logistic equation for the selected pesticide.
 These can be found in the "pesticide_info" data frame provided in this package.
 If you are including other pesticides you will need to append them with their
 respective distribution variables to the "pesticide_info" table.}
 
-\item{scale_2}{The alpha/scale value for the second log logistic equation for the selected pesticide.
+\item{scale_2}{The alpha/scale value for the second Log Logistic equation for the selected pesticide.
 These can be found in the "pesticide_info" data frame provided in this package.
 If you are including other pesticides you will need to append them with their
 respective distribution variables to the "pesticide_info" table.}
 
-\item{shape_location_2}{The beta/shape value for the second log logistic equation for the selected pesticide.
+\item{shape_location_2}{The beta/shape value for the second Log Logistic equation for the selected pesticide.
 These can be found in the "pesticide_info" data frame provided in this package.
 If you are including other pesticides you will need to append them with their
 respective distribution variables to the "pesticide_info" table.}

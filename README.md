@@ -6,16 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package provides code for estimating combined toxicity of measured
-pesticides using their Species Sensitivity Distributions (SSDs) in a
-multi-substance potentially affected fraction approach. The resulting
-value is a estimate of the percentage of species impacted by the
-measured pesticides, a value which is referred to in this package as the
-**Pesticide Risk Metric (PRM)**. This is based on the the Queensland
+This package provides code for estimating the combined toxicity of
+measured pesticides using their Species Sensitivity Distributions (SSDs)
+in a multi-substance, potentially affected fraction approach. The
+resulting value is an estimate of the percentage of species impacted by
+the measured pesticides; a value which is referred to in this package as
+the **Pesticide Risk Metric (PRM)**. This is based on the Queensland
 Department of Environment and Science Water Quality & Investigation’s
 [method](https://www.publications.qld.gov.au/dataset/method-development-pesticide-risk-metric-baseline-condition-of-waterways-to-gbr/resource/c65858f9-d7ba-4aef-aa4f-e148f950220f)
-used in the Reef 2050 Water Quality Improvement Plan, with the main
-difference being the ability to add different pesticides to be measured
+used in the Reef 2050 Water Quality Improvement Plan. The main
+difference is the ability to add different pesticides to be measured
 provided they have one of the following SSD distributions:
 
 - Burr_Type_III
@@ -119,11 +119,11 @@ head(Canto_wet_season_Total_PRM)
 #> # A tibble: 6 × 3
 #>   `Site Name`    `Sampling Year` `Total PRM`
 #>   <chr>          <chr>                 <dbl>
-#> 1 Celestial City 2017-2018             21.1 
-#> 2 Mt Lunar       2017-2018              5.97
+#> 1 Celestial City 2017-2018             21.0 
+#> 2 Mt Lunar       2017-2018              5.98
 #> 3 Violet Town    2017-2018             37.5 
-#> 4 Celestial City 2018-2019             16.8 
-#> 5 Mt Lunar       2018-2019              3.92
+#> 4 Celestial City 2018-2019             16.9 
+#> 5 Mt Lunar       2018-2019              3.94
 #> 6 Violet Town    2018-2019             31.2
 ```
 

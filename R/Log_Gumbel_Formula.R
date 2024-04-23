@@ -1,13 +1,13 @@
 #' Log Gumbel CDF Equation Formula
 #'
 #' @param concentration The vector of concentration values for a selected pesticide,
-#' that has a log gumbel shaped species sensitivity distribution,
+#' that has a Log Gumbel shaped species sensitivity distribution,
 #' to run the equation on.
-#' @param shape_location The mu/location value for the log gumbel equation for the selected pesticide.
+#' @param shape_location The mu/location value for the Log Gumbel equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
-#' @param scale The beta/scale value for the log gumbel equation for the selected pesticide.
+#' @param scale The beta/scale value for the Log Gumbel equation for the selected pesticide.
 #' These can be found in the "pesticide_info" data frame provided in this package.
 #' If you are including other pesticides you will need to append them with their
 #' respective distribution variables to the "pesticide_info" table.
