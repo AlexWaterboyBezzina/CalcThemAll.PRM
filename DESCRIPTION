@@ -1,6 +1,6 @@
 Package: CalcThemAll.PRM
 Title: Calculate Pesticide Risk Metric (PRM) Values from Multiple Pesticides...Calc Them All
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: c(
     person("Alexander", "Bezzina", ,"alex.h.bezzina@gmail.com", 
     role = c("aut", "cre", "cph")),
