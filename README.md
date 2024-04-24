@@ -22,7 +22,7 @@ used in the Reef 2050 Water Quality Improvement Plan. The main
 difference is the ability to add different pesticides to be measured
 provided they have one of the following SSD distributions:
 
-- Burr_Type_III
+- Burr Type III
 - Gamma
 - Inverse Weibull
 - Log Gumbel
